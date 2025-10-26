@@ -109,6 +109,9 @@ temp/
 .env.test.local
 .env.production.local
 
+# Course outline files (optional - uncomment to ignore)
+# course-outlines/
+
 # Vercel
 .vercel
 

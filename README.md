@@ -68,6 +68,8 @@ WatSearch/
 │   ├── SearchInterface.tsx # Search functionality
 │   ├── Dashboard.tsx        # Dashboard overview
 │   └── CourseBrowser.tsx   # Course browsing
+├── course-outlines/        # HTML course outline files
+│   ├── Fall 2025_ *.html   # Course outline files
 ├── data/                   # Parsed course data
 │   └── courses.json        # Course information
 ├── scripts/                # Data parsing scripts
@@ -81,7 +83,7 @@ WatSearch/
 
 The application currently supports parsing course outline HTML files. To add your course data:
 
-1. Place HTML course outline files in the root directory
+1. Place HTML course outline files in the `course-outlines/` directory
 2. Name them with the pattern: `Fall 2025_ [Course Name].html`
 3. Run the parsing script: `npm run parse-courses`
 

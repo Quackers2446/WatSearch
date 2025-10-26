@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const cheerio = require("cheerio");
 
-const coursesDirectory = path.join(__dirname, "../");
+const coursesDirectory = path.join(__dirname, "../course-outlines");
 
 function parseCourseOutline(filePath) {
   try {
