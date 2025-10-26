@@ -1,338 +1,370 @@
 [
-  {
-    "id": "CS343Fall2025",
-    "code": "CS 343",
-    "name": "Concurrent and Parallel Programming",
-    "term": "Fall 2025",
-    "sections": [
-      "001 [LEC]",
-      "002 [LEC]",
-      "101 [TST]"
-    ],
-    "instructor": {
-      "name": "Peter Buhr",
-      "email": "pabuhr@uwaterloo.ca"
+    {
+        "id": "CS343Fall2025",
+        "code": "CS 343",
+        "name": "Concurrent and Parallel Programming",
+        "term": "Fall 2025",
+        "sections": [
+            "001 [LEC]",
+            "002 [LEC]",
+            "101 [TST]"
+        ],
+        "instructor": {
+            "name": "Peter Buhr",
+            "email": "pabuhr@uwaterloo.ca"
+        },
+        "schedule": {
+            "days": [
+                "Tue",
+                "Thu",
+                "Tue",
+                "Thu",
+                "Wednesday"
+            ],
+            "time": "01:00PM - 02:20PM",
+            "location": "MC 4045"
+        },
+        "description": "Calendar Description for CS 343\n                An introduction to concurrent and parallel programming, with an emphasis on language constructs. Major topics include exceptions, coroutines, atomic operations, critical sections, mutual exclusion, semaphores, high-level concurrency, deadlock, interprocess communication, process structuring, shared memory, and distributed architectures. Students will learn how to structure, implement, and debug concurrent programs.\n                \n                    \n                        View requirements for CS 343",
+        "learningOutcomes": [
+            "Structure, implement and debug concurrent programs."
+        ],
+        "assessments": [
+            {
+                "id": "CS 343-assignments-1-5,-7%-each",
+                "name": "Assignments 1-5, 7% each",
+                "type": "assignment",
+                "weight": 35,
+                "description": ""
+            },
+            {
+                "id": "CS 343-assignment-6-(groups-of-2)",
+                "name": "Assignment 6 (groups of 2)",
+                "type": "assignment",
+                "weight": 15,
+                "description": ""
+            },
+            {
+                "id": "CS 343-midterm",
+                "name": "Midterm",
+                "type": "assignment",
+                "weight": 20,
+                "description": ""
+            },
+            {
+                "id": "CS 343-final",
+                "name": "Final",
+                "type": "assignment",
+                "weight": 30,
+                "description": ""
+            }
+        ],
+        "materials": [
+            {
+                "id": "CS 343-understanding-control-flow:-concurrent-programming-using-μc++",
+                "title": "Understanding Control Flow: Concurrent Programming Using μC++",
+                "type": "textbook",
+                "required": false,
+                "notes": "Provided to students enrolled in the course."
+            },
+            {
+                "id": "CS 343-lecture-notes",
+                "title": "Lecture notes",
+                "type": "textbook",
+                "required": false,
+                "notes": "Provided on the course website."
+            }
+        ],
+        "policies": [
+            "Assignments are due on the due-date at the time specified on the top of the assignment (usually 22:00).",
+            "2 assignments may be up to 2 days late; except for the last assignment if due on the last day of classes.",
+            "Short term absences are not accepted as a way to extend an assignment deadline. If you have a medical or personal issue affecting your ability to hand in an assignment or attend an examination, contact the ISC, and accomodations will be made, such as extending the assignment due-date a few days.",
+            "An assignment not handed in receives a mark of 0, unless there is a documented reason.",
+            "A copy of the documented reason must be given to the Instructional Support Coordinator.",
+            "The weight of the missing assignment is distributed across the other assignments."
+        ]
     },
-    "schedule": {
-      "days": [
-        "Tue",
-        "Thu",
-        "Tue",
-        "Thu",
-        "Wednesday"
-      ],
-      "time": "01:00PM - 02:20PM",
-      "location": "MC 4045"
+    {
+        "id": "SE390Fall2025",
+        "code": "SE 390",
+        "name": "Design Project Planning",
+        "term": "Fall 2025",
+        "sections": [
+            "001 [LEC]"
+        ],
+        "instructor": {
+            "name": "Kami Vaniea",
+            "email": "kami.vaniea@uwaterloo.ca"
+        },
+        "schedule": {
+            "days": [
+                "Thursdays"
+            ],
+            "time": "04:30PM - 06:20PM",
+            "location": "MC 1085"
+        },
+        "description": "Calendar Description for SE 390\n                Students undertake a substantial customer-driven group project as part of the SE390/490/491 design-project sequence covering all major phases of the software-engineering lifecycle. Lectures describe expectations and project-planning fundamentals. Students form groups, decide on a project concept, complete a project-approval process, develop high-level requirements for the project, perform a risk assessment, develop a test plan, and complete a first-iteration prototype. Social, legal, and economic factors are considered.\n                \n                    \n                        View requirements for SE 390",
+        "learningOutcomes": [
+            "Identify problems worth solving through software",
+            "Make strategic decisions in problem definition (such as scoping and pivoting)",
+            "Implement effective teamwork strategies",
+            "Effectively plan and estimate project work",
+            "Identify the strengths, weaknesses, and styles of co-workers",
+            "Apply software requirements engineering, design, and implementation practices on a team project",
+            "Validate project ideas and designs",
+            "Effectively communicate the progress and results of team projects"
+        ],
+        "assessments": [
+            {
+                "id": "SE 390-mini-project-1-process-(team)",
+                "name": "Mini-Project 1 Process (Team)",
+                "type": "assignment",
+                "weight": 2,
+                "description": ""
+            },
+            {
+                "id": "SE 390-mini-project-1-results-(team)",
+                "name": "Mini-Project 1 Results (Team)",
+                "type": "assignment",
+                "weight": 2,
+                "description": ""
+            },
+            {
+                "id": "SE 390-mini-project-1-presentation-(team)",
+                "name": "Mini-Project 1 Presentation (Team)",
+                "type": "assignment",
+                "weight": 1,
+                "description": ""
+            },
+            {
+                "id": "SE 390-mini-project-2-process-(team)",
+                "name": "Mini-Project 2 Process (Team)",
+                "type": "assignment",
+                "weight": 10,
+                "description": ""
+            },
+            {
+                "id": "SE 390-mini-project-2-results-(team)",
+                "name": "Mini-Project 2 Results (Team)",
+                "type": "assignment",
+                "weight": 15,
+                "description": ""
+            },
+            {
+                "id": "SE 390-mini-project-2-presentation-(team)",
+                "name": "Mini-Project 2 Presentation (Team)",
+                "type": "assignment",
+                "weight": 5,
+                "description": ""
+            },
+            {
+                "id": "SE 390-mini-project-2-video-(team)",
+                "name": "Mini-Project 2 Video (Team)",
+                "type": "assignment",
+                "weight": 5,
+                "description": ""
+            },
+            {
+                "id": "SE 390-mini-project-3-(team)-process",
+                "name": "Mini-Project 3 (Team) Process",
+                "type": "assignment",
+                "weight": 15,
+                "description": ""
+            },
+            {
+                "id": "SE 390-mini-project-3-(team)-results",
+                "name": "Mini-Project 3 (Team) Results",
+                "type": "assignment",
+                "weight": 30,
+                "description": ""
+            },
+            {
+                "id": "SE 390-mini-project-3-(team)-presentation",
+                "name": "Mini-Project 3 (Team) Presentation",
+                "type": "assignment",
+                "weight": 5,
+                "description": ""
+            },
+            {
+                "id": "SE 390-peer-critique-(individual)",
+                "name": "Peer critique (Individual)",
+                "type": "assignment",
+                "weight": 10,
+                "description": ""
+            }
+        ],
+        "materials": [
+            {
+                "id": "SE 390-se-capstone-design-project-handbook-by-derek-rayside",
+                "title": "SE Capstone Design Project Handbook by Derek Rayside",
+                "type": "textbook",
+                "required": false,
+                "notes": "Available from the capstone website:  https://ece.uwaterloo.ca/~se_c..."
+            },
+            {
+                "id": "SE 390-past-project-abstracts-and-videos",
+                "title": "Past project abstracts and videos",
+                "type": "textbook",
+                "required": false,
+                "notes": "Available from the capstone website:  https://ece.uwaterloo.ca/~se_c..."
+            }
+        ],
+        "policies": [
+            "Late Submissions: Late deliverable submissions will not be accepted.",
+            "Extra Credit: In this class, there will be no opportunities to earn extra credit. Make-up projects will not be offered under any circumstances.",
+            "Attendance & Illness: Attendance of the scheduled team meetings with the instructors and presentations is mandatory for all team members. Attendance of the guest lectures is not mandatory, but highly encouraged and appreciated and rewarded by bonus points. It would be simply unfair to the guest speakers to have low attendance.",
+            "If you feel ill, you should seek appropriate medical attention. If you miss a team meeting with the instructor for health reasons, you need notify me, explaining the reason."
+        ]
     },
-    "description": "Calendar Description for CS 343\n                An introduction to concurrent and parallel programming, with an emphasis on language constructs. Major topics include exceptions, coroutines, atomic operations, critical sections, mutual exclusion, semaphores, high-level concurrency, deadlock, interprocess communication, process structuring, shared memory, and distributed architectures. Students will learn how to structure, implement, and debug concurrent programs.\n                \n                    \n                        View requirements for CS 343",
-    "learningOutcomes": [
-      "Structure, implement and debug concurrent programs."
-    ],
-    "assessments": [
-      {
-        "id": "CS 343-assignments-1-5,-7%-each",
-        "name": "Assignments 1-5, 7% each",
-        "type": "assignment",
-        "weight": 35,
-        "description": ""
-      },
-      {
-        "id": "CS 343-assignment-6-(groups-of-2)",
-        "name": "Assignment 6 (groups of 2)",
-        "type": "assignment",
-        "weight": 15,
-        "description": ""
-      },
-      {
-        "id": "CS 343-midterm",
-        "name": "Midterm",
-        "type": "assignment",
-        "weight": 20,
-        "description": ""
-      },
-      {
-        "id": "CS 343-final",
-        "name": "Final",
-        "type": "assignment",
-        "weight": 30,
-        "description": ""
-      }
-    ],
-    "materials": [
-      {
-        "id": "CS 343-understanding-control-flow:-concurrent-programming-using-μc++",
-        "title": "Understanding Control Flow: Concurrent Programming Using μC++",
-        "type": "textbook",
-        "required": false,
-        "notes": "Provided to students enrolled in the course."
-      },
-      {
-        "id": "CS 343-lecture-notes",
-        "title": "Lecture notes",
-        "type": "textbook",
-        "required": false,
-        "notes": "Provided on the course website."
-      }
-    ],
-    "policies": [
-      "Assignments are due on the due-date at the time specified on the top of the assignment (usually 22:00).",
-      "2 assignments may be up to 2 days late; except for the last assignment if due on the last day of classes.",
-      "Short term absences are not accepted as a way to extend an assignment deadline. If you have a medical or personal issue affecting your ability to hand in an assignment or attend an examination, contact the ISC, and accomodations will be made, such as extending the assignment due-date a few days.",
-      "An assignment not handed in receives a mark of 0, unless there is a documented reason.",
-      "A copy of the documented reason must be given to the Instructional Support Coordinator.",
-      "The weight of the missing assignment is distributed across the other assignments."
-    ]
-  },
-  {
-    "id": "SE390Fall2025",
-    "code": "SE 390",
-    "name": "Design Project Planning",
-    "term": "Fall 2025",
-    "sections": [
-      "001 [LEC]"
-    ],
-    "instructor": {
-      "name": "Kami Vaniea",
-      "email": "kami.vaniea@uwaterloo.ca"
+    {
+        "id": "SE464Fall2025",
+        "code": "SE 464",
+        "name": "Software Design and Architectures",
+        "term": "Fall 2025",
+        "sections": [
+            "001 [LEC]"
+        ],
+        "instructor": {
+            "name": "Weiyi Shang",
+            "email": "wshang@uwaterloo.ca"
+        },
+        "schedule": {
+            "days": [
+                "Mon",
+                "Wed"
+            ],
+            "time": "10:00AM - 11:20AM",
+            "location": "EV3 1408"
+        },
+        "description": "Calendar Description for SE 464\n                Introduces students to the design, implementation, and evolution phases of software development. Software design processes, methods, and notation. Implementation of designs. Evolution of designs and implementations. Management of design activities.\n                \n                    \n                        View requirements for SE 464",
+        "learningOutcomes": [
+            "propose and analyze software architectures.",
+            "explain the strengths and weaknesses of various architectural styles and design patterns / techniques.",
+            "communicate and rationalize architectural and design decisions.",
+            "ideate, justify, and implement software designs.",
+            "evaluate, compare, and contrast different architectures and designs."
+        ],
+        "assessments": [
+            {
+                "id": "SE 464-lab-1-(week-3-to-week-6)",
+                "name": "Lab 1 (week 3 to week 6)",
+                "type": "assignment",
+                "weight": 15,
+                "description": ""
+            },
+            {
+                "id": "SE 464-lab-2-(week-8-to-week-11)",
+                "name": "Lab 2 (week 8 to week 11)",
+                "type": "assignment",
+                "weight": 15,
+                "description": ""
+            },
+            {
+                "id": "SE 464-assignment-(week-12-to-week-14)",
+                "name": "Assignment (week 12 to week 14)",
+                "type": "assignment",
+                "weight": 30,
+                "description": ""
+            },
+            {
+                "id": "SE 464-guest-lecture-1-(week-4-due)",
+                "name": "Guest lecture 1 (week 4 due)",
+                "type": "assignment",
+                "weight": 2,
+                "description": ""
+            },
+            {
+                "id": "SE 464-midterm-study-(week-8-due)",
+                "name": "Midterm study (week 8 due)",
+                "type": "assignment",
+                "weight": 2,
+                "description": ""
+            },
+            {
+                "id": "SE 464-guest-lecture-2-(week-10-due)",
+                "name": "Guest Lecture 2 (week 10 due)",
+                "type": "assignment",
+                "weight": 2,
+                "description": ""
+            },
+            {
+                "id": "SE 464-guest-lecture-3-(week-11-due)",
+                "name": "Guest Lecture 3 (week 11 due)",
+                "type": "assignment",
+                "weight": 2,
+                "description": ""
+            },
+            {
+                "id": "SE 464-final-study-(week-14-due)",
+                "name": "Final Study (week 14 due)",
+                "type": "assignment",
+                "weight": 2,
+                "description": ""
+            },
+            {
+                "id": "SE 464-final-exam-(tbd)",
+                "name": "Final Exam (TBD)",
+                "type": "exam",
+                "weight": 30,
+                "description": ""
+            }
+        ],
+        "materials": [
+            {
+                "id": "SE 464-lecture-slides",
+                "title": "Lecture slides",
+                "type": "textbook",
+                "required": false,
+                "notes": ""
+            },
+            {
+                "id": "SE 464-other-readings/viewings-as-appropriate",
+                "title": "Other readings/viewings as appropriate",
+                "type": "textbook",
+                "required": false,
+                "notes": ""
+            },
+            {
+                "id": "SE 464-labs:-git,-aws,-a-bunch-of-tech",
+                "title": "Labs: Git, AWS, a bunch of tech",
+                "type": "textbook",
+                "required": false,
+                "notes": ""
+            }
+        ],
+        "policies": [
+            "Late policy: 20% deduction per day"
+        ]
     },
-    "schedule": {
-      "days": [
-        "Thursdays"
-      ],
-      "time": "04:30PM - 06:20PM",
-      "location": "MC 1085"
-    },
-    "description": "Calendar Description for SE 390\n                Students undertake a substantial customer-driven group project as part of the SE390/490/491 design-project sequence covering all major phases of the software-engineering lifecycle. Lectures describe expectations and project-planning fundamentals. Students form groups, decide on a project concept, complete a project-approval process, develop high-level requirements for the project, perform a risk assessment, develop a test plan, and complete a first-iteration prototype. Social, legal, and economic factors are considered.\n                \n                    \n                        View requirements for SE 390",
-    "learningOutcomes": [
-      "Identify problems worth solving through software",
-      "Make strategic decisions in problem definition (such as scoping and pivoting)",
-      "Implement effective teamwork strategies",
-      "Effectively plan and estimate project work",
-      "Identify the strengths, weaknesses, and styles of co-workers",
-      "Apply software requirements engineering, design, and implementation practices on a team project",
-      "Validate project ideas and designs",
-      "Effectively communicate the progress and results of team projects"
-    ],
-    "assessments": [
-      {
-        "id": "SE 390-mini-project-1-process-(team)",
-        "name": "Mini-Project 1 Process (Team)",
-        "type": "assignment",
-        "weight": 2,
-        "description": ""
-      },
-      {
-        "id": "SE 390-mini-project-1-results-(team)",
-        "name": "Mini-Project 1 Results (Team)",
-        "type": "assignment",
-        "weight": 2,
-        "description": ""
-      },
-      {
-        "id": "SE 390-mini-project-1-presentation-(team)",
-        "name": "Mini-Project 1 Presentation (Team)",
-        "type": "assignment",
-        "weight": 1,
-        "description": ""
-      },
-      {
-        "id": "SE 390-mini-project-2-process-(team)",
-        "name": "Mini-Project 2 Process (Team)",
-        "type": "assignment",
-        "weight": 10,
-        "description": ""
-      },
-      {
-        "id": "SE 390-mini-project-2-results-(team)",
-        "name": "Mini-Project 2 Results (Team)",
-        "type": "assignment",
-        "weight": 15,
-        "description": ""
-      },
-      {
-        "id": "SE 390-mini-project-2-presentation-(team)",
-        "name": "Mini-Project 2 Presentation (Team)",
-        "type": "assignment",
-        "weight": 5,
-        "description": ""
-      },
-      {
-        "id": "SE 390-mini-project-2-video-(team)",
-        "name": "Mini-Project 2 Video (Team)",
-        "type": "assignment",
-        "weight": 5,
-        "description": ""
-      },
-      {
-        "id": "SE 390-mini-project-3-(team)-process",
-        "name": "Mini-Project 3 (Team) Process",
-        "type": "assignment",
-        "weight": 15,
-        "description": ""
-      },
-      {
-        "id": "SE 390-mini-project-3-(team)-results",
-        "name": "Mini-Project 3 (Team) Results",
-        "type": "assignment",
-        "weight": 30,
-        "description": ""
-      },
-      {
-        "id": "SE 390-mini-project-3-(team)-presentation",
-        "name": "Mini-Project 3 (Team) Presentation",
-        "type": "assignment",
-        "weight": 5,
-        "description": ""
-      },
-      {
-        "id": "SE 390-peer-critique-(individual)",
-        "name": "Peer critique (Individual)",
-        "type": "assignment",
-        "weight": 10,
-        "description": ""
-      }
-    ],
-    "materials": [
-      {
-        "id": "SE 390-se-capstone-design-project-handbook-by-derek-rayside",
-        "title": "SE Capstone Design Project Handbook by Derek Rayside",
-        "type": "textbook",
-        "required": false,
-        "notes": "Available from the capstone website:  https://ece.uwaterloo.ca/~se_c..."
-      },
-      {
-        "id": "SE 390-past-project-abstracts-and-videos",
-        "title": "Past project abstracts and videos",
-        "type": "textbook",
-        "required": false,
-        "notes": "Available from the capstone website:  https://ece.uwaterloo.ca/~se_c..."
-      }
-    ],
-    "policies": [
-      "Late Submissions: Late deliverable submissions will not be accepted.",
-      "Extra Credit: In this class, there will be no opportunities to earn extra credit. Make-up projects will not be offered under any circumstances.",
-      "Attendance & Illness: Attendance of the scheduled team meetings with the instructors and presentations is mandatory for all team members. Attendance of the guest lectures is not mandatory, but highly encouraged and appreciated and rewarded by bonus points. It would be simply unfair to the guest speakers to have low attendance.",
-      "If you feel ill, you should seek appropriate medical attention. If you miss a team meeting with the instructor for health reasons, you need notify me, explaining the reason."
-    ]
-  },
-  {
-    "id": "SE464Fall2025",
-    "code": "SE 464",
-    "name": "Software Design and Architectures",
-    "term": "Fall 2025",
-    "sections": [
-      "001 [LEC]"
-    ],
-    "instructor": {
-      "name": "Weiyi Shang",
-      "email": "wshang@uwaterloo.ca"
-    },
-    "schedule": {
-      "days": [
-        "Mon",
-        "Wed"
-      ],
-      "time": "10:00AM - 11:20AM",
-      "location": "EV3 1408"
-    },
-    "description": "Calendar Description for SE 464\n                Introduces students to the design, implementation, and evolution phases of software development. Software design processes, methods, and notation. Implementation of designs. Evolution of designs and implementations. Management of design activities.\n                \n                    \n                        View requirements for SE 464",
-    "learningOutcomes": [
-      "propose and analyze software architectures.",
-      "explain the strengths and weaknesses of various architectural styles and design patterns / techniques.",
-      "communicate and rationalize architectural and design decisions.",
-      "ideate, justify, and implement software designs.",
-      "evaluate, compare, and contrast different architectures and designs."
-    ],
-    "assessments": [
-      {
-        "id": "SE 464-lab-1-(week-3-to-week-6)",
-        "name": "Lab 1 (week 3 to week 6)",
-        "type": "assignment",
-        "weight": 15,
-        "description": ""
-      },
-      {
-        "id": "SE 464-lab-2-(week-8-to-week-11)",
-        "name": "Lab 2 (week 8 to week 11)",
-        "type": "assignment",
-        "weight": 15,
-        "description": ""
-      },
-      {
-        "id": "SE 464-assignment-(week-12-to-week-14)",
-        "name": "Assignment (week 12 to week 14)",
-        "type": "assignment",
-        "weight": 30,
-        "description": ""
-      },
-      {
-        "id": "SE 464-guest-lecture-1-(week-4-due)",
-        "name": "Guest lecture 1 (week 4 due)",
-        "type": "assignment",
-        "weight": 2,
-        "description": ""
-      },
-      {
-        "id": "SE 464-midterm-study-(week-8-due)",
-        "name": "Midterm study (week 8 due)",
-        "type": "assignment",
-        "weight": 2,
-        "description": ""
-      },
-      {
-        "id": "SE 464-guest-lecture-2-(week-10-due)",
-        "name": "Guest Lecture 2 (week 10 due)",
-        "type": "assignment",
-        "weight": 2,
-        "description": ""
-      },
-      {
-        "id": "SE 464-guest-lecture-3-(week-11-due)",
-        "name": "Guest Lecture 3 (week 11 due)",
-        "type": "assignment",
-        "weight": 2,
-        "description": ""
-      },
-      {
-        "id": "SE 464-final-study-(week-14-due)",
-        "name": "Final Study (week 14 due)",
-        "type": "assignment",
-        "weight": 2,
-        "description": ""
-      },
-      {
-        "id": "SE 464-final-exam-(tbd)",
-        "name": "Final Exam (TBD)",
-        "type": "exam",
-        "weight": 30,
-        "description": ""
-      }
-    ],
-    "materials": [
-      {
-        "id": "SE 464-lecture-slides",
-        "title": "Lecture slides",
-        "type": "textbook",
-        "required": false,
-        "notes": ""
-      },
-      {
-        "id": "SE 464-other-readings/viewings-as-appropriate",
-        "title": "Other readings/viewings as appropriate",
-        "type": "textbook",
-        "required": false,
-        "notes": ""
-      },
-      {
-        "id": "SE 464-labs:-git,-aws,-a-bunch-of-tech",
-        "title": "Labs: Git, AWS, a bunch of tech",
-        "type": "textbook",
-        "required": false,
-        "notes": ""
-      }
-    ],
-    "policies": [
-      "Late policy: 20% deduction per day"
-    ]
-  }
+    {
+        "id": "piazza-1761448648331",
+        "code": "Piazza Discussions",
+        "name": "Course Discussions",
+        "term": "Fall 2025",
+        "source": "Piazza",
+        "instructor": {
+            "name": "TBA"
+        },
+        "schedule": {
+            "days": [],
+            "time": "",
+            "location": ""
+        },
+        "description": "Discussion posts imported from Piazza",
+        "learningOutcomes": [],
+        "assessments": [],
+        "materials": [],
+        "policies": [],
+        "discussions": [
+            {
+                "id": "piazza-post-0",
+                "title": "3b1b videos",
+                "content": "3b1b videosin case anyone is interested, the youtuber 3blue1brown has started a seris on the laplace transform. he's known for makiAn instructor thinks this is a good note",
+                "author": "",
+                "date": "Wednesday",
+                "tags": [],
+                "course": "SE 380"
+            }
+        ],
+        "lastUpdated": "2025-10-26T03:17:28.331Z"
+    }
 ]

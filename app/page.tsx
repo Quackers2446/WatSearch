@@ -13,19 +13,31 @@ export default function Home() {
     const [deadlines, setDeadlines] = useState<Deadline[]>([])
     const [activeTab, setActiveTab] = useState<'search' | 'dashboard' | 'courses'>('search')
     const [searchFilters, setSearchFilters] = useState<SearchFilters>({})
+    const [isLoading, setIsLoading] = useState(false)
+    const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
 
     useEffect(() => {
         // Load course data
         loadCourseData()
+
+        // Set up polling to check for new data every 5 seconds
+        const interval = setInterval(() => {
+            loadCourseData()
+        }, 5000)
+
+        return () => clearInterval(interval)
     }, [])
 
     const loadCourseData = async () => {
         try {
-            // Load parsed course data from JSON file
-            const courseData = await import('../data/courses.json')
-            const parsedCourses: Course[] = courseData.default || courseData
+            setIsLoading(true)
+            // Load course data from API endpoint (which reads from JSON file)
+            const response = await fetch('/api/courses')
+            const data = await response.json()
+            const parsedCourses: Course[] = data.courses || []
 
             setCourses(parsedCourses)
+            setLastUpdated(new Date())
 
             // Generate deadlines from assessments
             const allDeadlines: Deadline[] = []
@@ -55,6 +67,8 @@ export default function Home() {
             setDeadlines(allDeadlines.sort((a, b) => a.dueDate.getTime() - b.dueDate.getTime()))
         } catch (error) {
             console.error('Error loading course data:', error)
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -63,6 +77,27 @@ export default function Home() {
     return (
         <div className="min-h-screen bg-gray-50">
             <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+
+            {/* Status Bar */}
+            {isLoading && (
+                <div className="bg-blue-50 border-b border-blue-200 px-4 py-2">
+                    <div className="container mx-auto flex items-center space-x-2">
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                        <span className="text-sm text-blue-700">Updating course data...</span>
+                    </div>
+                </div>
+            )}
+
+            {lastUpdated && !isLoading && (
+                <div className="bg-green-50 border-b border-green-200 px-4 py-2">
+                    <div className="container mx-auto flex items-center space-x-2">
+                        <div className="h-2 w-2 bg-green-500 rounded-full"></div>
+                        <span className="text-sm text-green-700">
+                            Last updated: {lastUpdated.toLocaleTimeString()}
+                        </span>
+                    </div>
+                </div>
+            )}
 
             <main className="container mx-auto px-4 py-8">
                 {activeTab === 'search' && (

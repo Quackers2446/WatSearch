@@ -1,0 +1,59 @@
+{
+    "manifest_version": 3,
+    "name": "WatSearch Data Collector",
+    "version": "1.0.1",
+    "description": "Collects course data from University of Waterloo platforms for WatSearch",
+    "author": "WatSearch Team",
+    "homepage_url": "https://github.com/watsearch/watsearch",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "scripting",
+        "tabs",
+        "webRequest",
+        "webNavigation"
+    ],
+    "host_permissions": [
+        "https://learn.uwaterloo.ca/*",
+        "https://quest.uwaterloo.ca/*",
+        "https://piazza.com/*",
+        "http://localhost:3000/*",
+        "http://localhost:3001/*",
+        "http://localhost:3002/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://learn.uwaterloo.ca/*",
+                "https://quest.uwaterloo.ca/*",
+                "https://piazza.com/*"
+            ],
+            "js": [
+                "enhanced-content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "WatSearch Data Collector"
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "icons/*"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}
