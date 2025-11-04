@@ -127,7 +127,9 @@ export default function CourseBrowser({ courses }: CourseBrowserProps) {
                                                         <span className="text-sm font-medium text-gray-900">{assessment.weight}%</span>
                                                         {assessment.dueDate && (
                                                             <p className="text-xs text-gray-500">
-                                                                Due {assessment.dueDate.toLocaleDateString()}
+                                                                Due {typeof assessment.dueDate === 'string' 
+                                                                    ? new Date(assessment.dueDate).toLocaleDateString()
+                                                                    : assessment.dueDate.toLocaleDateString()}
                                                             </p>
                                                         )}
                                                     </div>

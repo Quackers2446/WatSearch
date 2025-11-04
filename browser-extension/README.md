@@ -1,6 +1,6 @@
 # WatSearch Browser Extension
 
-A Chrome/Edge extension that automatically extracts course data from University of Waterloo platforms (LEARN, Quest, Piazza) and sends it to your local WatSearch application.
+A Chrome/Edge extension that automatically extracts course data from University of Waterloo platforms (LEARN, Quest, Piazza, Course Outlines) and sends it to your local WatSearch application. The extension is ready for Chrome Web Store submission and follows Manifest V3 best practices.
 
 ## 🚀 Quick Start (5 minutes)
 
@@ -55,7 +55,37 @@ A Chrome/Edge extension that automatically extracts course data from University 
 
 ## 🎯 How to Use
 
-### Automatic Data Collection
+### Processing Course Outlines (Recommended)
+
+1. **Navigate to Course Outlines:**
+
+   - Go to [outline.uwaterloo.ca](https://outline.uwaterloo.ca) and log in
+   - Navigate to your enrolled courses page (shows all your courses for the term)
+
+2. **Open Extension Popup:**
+
+   - Click the WatSearch extension icon in your browser toolbar
+   - The extension will detect you're on the course listings page
+
+3. **Select Terms and Process:**
+
+   - Select which terms you want to process (defaults to most recent term)
+   - Click "Process Selected Course Outlines"
+   - The extension will automatically:
+     - Extract course URLs for selected terms
+     - Open each course outline in background tabs
+     - Extract the full HTML content
+     - Send it directly to your WatSearch API
+     - Show progress and allow cancellation
+
+4. **Monitor Progress:**
+
+   - Watch the progress in the extension popup
+   - See how many courses have been successfully processed
+   - Cancel at any time if needed
+   - Check your WatSearch application to see the imported courses
+
+### Automatic Data Collection (LEARN, Quest, Piazza)
 
 1. **Navigate to UW Sites:**
 
@@ -74,24 +104,16 @@ A Chrome/Edge extension that automatically extracts course data from University 
    - Click "Send to WatSearch" to sync the data
    - Check your WatSearch application to see the imported data
 
-### Manual Data Collection
-
-1. **Open Extension Popup:**
-
-   - Click the WatSearch extension icon
-   - The popup shows which site you're currently on
-
-2. **Extract Data Manually:**
-
-   - Click "Extract Course Data" button
-   - Wait for the extraction to complete
-   - You'll see how many items were found
-
-3. **Send to WatSearch:**
-   - Click "Send to WatSearch" to sync the data
-   - The data will appear in your WatSearch application
-
 ## 📊 What Data is Collected
+
+### From Course Outlines (outline.uwaterloo.ca):
+
+- **Course Information**: Code, name, term, instructor, sections
+- **Schedule**: Lecture times, locations, instructors
+- **Assessments**: Assignments, exams, quizzes, projects, labs with due dates and weights
+- **Materials**: Textbooks, lecture notes, readings, software, lab manuals
+- **Policies**: Academic policies, grading schemes, late policies
+- **Deadlines**: All important dates and deadlines
 
 ### From LEARN:
 
@@ -227,10 +249,136 @@ browser-extension/
 2. **Update content.js**: Add new site detection and extraction
 3. **Update popup.js**: Add site recognition and UI elements
 
+## 📦 Chrome Web Store Submission
+
+The extension is ready for Chrome Web Store submission. Here's what's been prepared:
+
+### ✅ Manifest V3 Compliance
+
+- ✅ Uses Manifest V3 (`manifest_version: 3`)
+- ✅ Service worker instead of background page
+- ✅ Minimal permissions (only what's needed)
+- ✅ No deprecated APIs
+- ✅ Proper content security policy
+
+### ✅ Required Assets
+
+- ✅ Icons: 16x16, 48x48, 128x128 PNG files
+- ✅ Short description (under 132 characters)
+- ✅ Detailed description
+- ✅ Screenshots (you'll need to add these)
+
+### 📋 Submission Checklist
+
+Before submitting to Chrome Web Store:
+
+1. **Create Store Assets:**
+   - [ ] **Screenshots**: 1280x800 or 640x400 (at least 1, up to 5)
+   - [ ] **Promotional Images** (optional): 920x680 or 1400x560
+   - [ ] **Small Promotional Tile**: 440x280
+   - [ ] **Marquee Promotional Tile**: 920x680
+   - [ ] **Icon**: 128x128 (already have)
+
+2. **Prepare Store Listing:**
+   - [ ] **Name**: "WatSearch Data Collector" (already set)
+   - [ ] **Short Description**: "Collects course data from University of Waterloo platforms for WatSearch" (already set)
+   - [ ] **Detailed Description**: Write a compelling description (see template below)
+   - [ ] **Category**: Education or Productivity
+   - [ ] **Language**: English (US)
+
+3. **Privacy & Compliance:**
+   - [ ] **Privacy Policy URL**: Create and host a privacy policy
+   - [ ] **Single Purpose**: Extension has a single, clear purpose ✓
+   - [ ] **User Data**: Document what data is collected (only local data)
+   - [ ] **Permissions Justification**: Explain why each permission is needed
+
+4. **Testing:**
+   - [ ] Test on Chrome 88+ (Manifest V3 support)
+   - [ ] Test on Edge (Chromium-based)
+   - [ ] Verify all features work correctly
+   - [ ] Test with different UW platform pages
+
+### 📝 Store Listing Description Template
+
+```
+WatSearch Data Collector helps University of Waterloo students automatically collect and organize course information from multiple UW platforms into a single, searchable database.
+
+KEY FEATURES:
+• Automatic course outline extraction from outline.uwaterloo.ca
+• Term-based filtering to process specific semesters
+• Progress tracking and cancellation support
+• Direct integration with local WatSearch application
+• Support for LEARN, Quest, Piazza, and Course Outlines
+• Zero external data transmission - all data stays local
+
+HOW IT WORKS:
+1. Install the extension and configure your local WatSearch URL
+2. Navigate to outline.uwaterloo.ca and view your enrolled courses
+3. Select which terms to process and click "Process Selected Course Outlines"
+4. The extension automatically extracts course details and sends them to WatSearch
+5. View and search all your course information in one place
+
+PRIVACY & SECURITY:
+• All data processing happens locally on your computer
+• No data is sent to external servers
+• Extension only accesses UW platforms you're already logged into
+• You control when data is extracted and sent
+• No login credentials are stored or accessed
+
+REQUIREMENTS:
+• Chrome 88+ or Edge 88+ (Chromium-based)
+• Local WatSearch application running (see main README)
+• Active login session to UW platforms
+
+This extension is designed specifically for University of Waterloo students and respects UW's terms of service. It only extracts publicly available course information that you can already access through your authenticated sessions.
+```
+
+### 🔒 Privacy Policy Requirements
+
+Create a privacy policy that covers:
+
+1. **Data Collection**: What data is collected (course information, HTML content)
+2. **Data Storage**: Where data is stored (local browser storage, local WatSearch instance)
+3. **Data Transmission**: Where data is sent (only to localhost WatSearch instance)
+4. **Third Parties**: No third-party services
+5. **User Control**: Users control when data is extracted
+6. **UW Compliance**: Respects University of Waterloo terms of service
+
+### 🚀 Submission Steps
+
+1. **Create Developer Account:**
+   - Go to [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole)
+   - Pay one-time $5 registration fee (if not already registered)
+
+2. **Prepare ZIP File:**
+   ```bash
+   cd browser-extension
+   zip -r watsearch-extension.zip . -x "*.git*" "*.md" "*.svg" "create_icons.html" "generate_icons.js"
+   ```
+
+3. **Upload Extension:**
+   - Click "New Item" in developer dashboard
+   - Upload the ZIP file
+   - Fill in store listing details
+   - Upload screenshots
+   - Add privacy policy URL
+   - Submit for review
+
+4. **Review Process:**
+   - Typically takes 1-3 business days
+   - Google may request additional information
+   - Respond promptly to any review comments
+
+### 📱 Supported Browsers
+
+- **Chrome**: Version 88+ (Manifest V3 support)
+- **Edge**: Version 88+ (Chromium-based)
+- **Other Chromium Browsers**: Should work with Manifest V3 support
+
 ## 📄 License
 
 This extension is part of the WatSearch project and follows the same license terms.
 
 ---
 
-**Note**: This extension is designed for University of Waterloo students and works with UW's specific platforms. The extension respects UW's terms of service and only extracts publicly available course information.
+**Note**: This extension is designed for University of Waterloo students and works with UW's specific platforms. The extension respects UW's terms of service and only extracts publicly available course information that you can access through your authenticated sessions.

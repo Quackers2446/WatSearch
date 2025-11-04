@@ -2,21 +2,21 @@
     "manifest_version": 3,
     "name": "WatSearch Data Collector",
     "version": "1.0.1",
-    "description": "Collects course data from University of Waterloo platforms for WatSearch",
+    "description": "Collects course data from University of Waterloo platforms (LEARN, Quest, Piazza, Course Outlines) and sends it to your local WatSearch application for centralized course management.",
+    "short_name": "WatSearch",
     "author": "WatSearch Team",
     "homepage_url": "https://github.com/watsearch/watsearch",
     "permissions": [
         "activeTab",
         "storage",
         "scripting",
-        "tabs",
-        "webRequest",
-        "webNavigation"
+        "tabs"
     ],
     "host_permissions": [
         "https://learn.uwaterloo.ca/*",
         "https://quest.uwaterloo.ca/*",
         "https://piazza.com/*",
+        "https://outline.uwaterloo.ca/*",
         "http://localhost:3000/*",
         "http://localhost:3001/*",
         "http://localhost:3002/*"
@@ -32,6 +32,15 @@
                 "enhanced-content.js"
             ],
             "run_at": "document_end"
+        },
+        {
+            "matches": [
+                "https://outline.uwaterloo.ca/*"
+            ],
+            "js": [
+                "outline-content.js"
+            ],
+            "run_at": "document_end"
         }
     ],
     "background": {
@@ -39,7 +48,12 @@
     },
     "action": {
         "default_popup": "popup.html",
-        "default_title": "WatSearch Data Collector"
+        "default_title": "WatSearch Data Collector",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        }
     },
     "icons": {
         "16": "icons/icon16.png",

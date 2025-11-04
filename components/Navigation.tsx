@@ -1,10 +1,10 @@
 'use client'
 
-import { Search, Calendar, BookOpen, Clock } from 'lucide-react'
+import { Search, Calendar, BookOpen, Clock, Upload } from 'lucide-react'
 
 interface NavigationProps {
-    activeTab: 'search' | 'dashboard' | 'courses'
-    setActiveTab: (tab: 'search' | 'dashboard' | 'courses') => void
+    activeTab: 'search' | 'dashboard' | 'courses' | 'upload'
+    setActiveTab: (tab: 'search' | 'dashboard' | 'courses' | 'upload') => void
 }
 
 export default function Navigation({ activeTab, setActiveTab }: NavigationProps) {
@@ -12,6 +12,7 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
         { id: 'search', label: 'Search', icon: Search },
         { id: 'dashboard', label: 'Dashboard', icon: Calendar },
         { id: 'courses', label: 'Courses', icon: BookOpen },
+        { id: 'upload', label: 'Upload', icon: Upload },
     ] as const
 
     return (
@@ -20,9 +21,11 @@ export default function Navigation({ activeTab, setActiveTab }: NavigationProps)
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center space-x-4 lg:space-x-8">
                         <div className="flex items-center space-x-2">
-                            <div className="w-8 h-8 bg-uw-red rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-sm">W</span>
-                            </div>
+                            <img
+                                src="/logo.png"
+                                alt="WatSearch Logo"
+                                className="w-8 h-8 object-contain"
+                            />
                             <h1 className="text-lg lg:text-xl font-bold text-gray-900">WatSearch</h1>
                         </div>
 

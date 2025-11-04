@@ -6,12 +6,13 @@ import { Course, Deadline, SearchFilters } from '@/types'
 import SearchInterface from '@/components/SearchInterface'
 import Dashboard from '@/components/Dashboard'
 import CourseBrowser from '@/components/CourseBrowser'
+import UploadOutline from '@/components/UploadOutline'
 import Navigation from '@/components/Navigation'
 
 export default function Home() {
     const [courses, setCourses] = useState<Course[]>([])
     const [deadlines, setDeadlines] = useState<Deadline[]>([])
-    const [activeTab, setActiveTab] = useState<'search' | 'dashboard' | 'courses'>('search')
+    const [activeTab, setActiveTab] = useState<'search' | 'dashboard' | 'courses' | 'upload'>('search')
     const [searchFilters, setSearchFilters] = useState<SearchFilters>({})
     const [isLoading, setIsLoading] = useState(false)
     const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
@@ -45,7 +46,10 @@ export default function Home() {
                 course.assessments.forEach(assessment => {
                     if (assessment.dueDate) {
                         const now = new Date()
-                        const dueDate = assessment.dueDate
+                        // Handle date strings from JSON
+                        const dueDate = typeof assessment.dueDate === 'string'
+                            ? new Date(assessment.dueDate)
+                            : assessment.dueDate
                         const daysUntilDue = Math.ceil((dueDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
 
                         allDeadlines.push({
@@ -53,7 +57,7 @@ export default function Home() {
                             title: assessment.name,
                             courseCode: course.code,
                             courseName: course.name,
-                            dueDate: assessment.dueDate,
+                            dueDate: dueDate,
                             type: assessment.type,
                             weight: assessment.weight,
                             description: assessment.description,
@@ -118,6 +122,10 @@ export default function Home() {
 
                 {activeTab === 'courses' && (
                     <CourseBrowser courses={courses} />
+                )}
+
+                {activeTab === 'upload' && (
+                    <UploadOutline />
                 )}
             </main>
         </div>

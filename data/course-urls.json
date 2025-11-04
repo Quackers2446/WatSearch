@@ -1,0 +1,329 @@
+[
+  {
+    "code": "CS 343",
+    "title": "Concurrent and Parallel Programming",
+    "term": "Fall 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/nc7p8w",
+    "outlineId": "nc7p8w",
+    "sections": [
+      "001",
+      "002",
+      "101"
+    ]
+  },
+  {
+    "code": "ECE 358",
+    "title": "Computer Networks",
+    "term": "Fall 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n93m3q",
+    "outlineId": "n93m3q",
+    "sections": [
+      "001",
+      "002",
+      "101-103",
+      "201"
+    ]
+  },
+  {
+    "code": "SCI 238",
+    "title": "Introductory Astronomy",
+    "term": "Fall 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/nped86",
+    "outlineId": "nped86",
+    "sections": [
+      "081"
+    ]
+  },
+  {
+    "code": "SE 380",
+    "title": "Introduction to Feedback Control",
+    "term": "Fall 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/nb5y8j",
+    "outlineId": "nb5y8j",
+    "sections": [
+      "001"
+    ]
+  },
+  {
+    "code": "SE 390",
+    "title": "Design Project Planning",
+    "term": "Fall 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/nbx84w",
+    "outlineId": "nbx84w",
+    "sections": [
+      "001"
+    ]
+  },
+  {
+    "code": "SE 464",
+    "title": "Software Design and Architectures",
+    "term": "Fall 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/njsack",
+    "outlineId": "njsack",
+    "sections": [
+      "001"
+    ]
+  },
+  {
+    "code": "PD 11",
+    "title": "Processes for Technical Report Writing",
+    "term": "Spring 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n6f837",
+    "outlineId": "n6f837",
+    "sections": [
+      "081",
+      "082"
+    ]
+  },
+  {
+    "code": "CS 341",
+    "title": "Algorithms",
+    "term": "Winter 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n529x7",
+    "outlineId": "n529x7",
+    "sections": [
+      "001-005"
+    ]
+  },
+  {
+    "code": "CS 349",
+    "title": "User Interfaces",
+    "term": "Winter 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n8szcq",
+    "outlineId": "n8szcq",
+    "sections": [
+      "001-003"
+    ]
+  },
+  {
+    "code": "CS 370",
+    "title": "Numerical Computation",
+    "term": "Winter 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/nbknz4",
+    "outlineId": "nbknz4",
+    "sections": [
+      "001-003",
+      "101"
+    ]
+  },
+  {
+    "code": "MATH 213",
+    "title": "Signals, Systems, and Differential Equations",
+    "term": "Winter 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/njxsgw",
+    "outlineId": "njxsgw",
+    "sections": [
+      "001",
+      "101"
+    ]
+  },
+  {
+    "code": "SE 350",
+    "title": "Operating Systems",
+    "term": "Winter 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/ngr5kv",
+    "outlineId": "ngr5kv",
+    "sections": [
+      "001"
+    ]
+  },
+  {
+    "code": "SE 465",
+    "title": "Software Testing and Quality Assurance",
+    "term": "Winter 2025",
+    "url": "https://outline.uwaterloo.ca/viewer/view/njwzpc",
+    "outlineId": "njwzpc",
+    "sections": [
+      "001"
+    ]
+  },
+  {
+    "code": "PD 10",
+    "title": "Professional Responsibility in Computing",
+    "term": "Fall 2024",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n9uzyv",
+    "outlineId": "n9uzyv",
+    "sections": [
+      "081-083"
+    ]
+  },
+  {
+    "code": "CS 240",
+    "title": "Data Structures and Data Management",
+    "term": "Spring 2024",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n7u9hw",
+    "outlineId": "n7u9hw",
+    "sections": [
+      "001-005",
+      "101-107",
+      "201"
+    ]
+  },
+  {
+    "code": "CS 247",
+    "title": "Software Engineering Principles",
+    "term": "Spring 2024",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n74gze",
+    "outlineId": "n74gze",
+    "sections": [
+      "001",
+      "101",
+      "201"
+    ]
+  },
+  {
+    "code": "CS 348",
+    "title": "Introduction to Database Management",
+    "term": "Spring 2024",
+    "url": "https://outline.uwaterloo.ca/viewer/view/ng5rpb",
+    "outlineId": "ng5rpb",
+    "sections": [
+      "001",
+      "004",
+      "101"
+    ]
+  },
+  {
+    "code": "ECE 192",
+    "title": "Engineering Economics and Impact on Society",
+    "term": "Spring 2024",
+    "url": "https://outline.uwaterloo.ca/viewer/view/nrztd8",
+    "outlineId": "nrztd8",
+    "sections": [
+      "003"
+    ]
+  },
+  {
+    "code": "MATH 239",
+    "title": "Introduction to Combinatorics",
+    "term": "Spring 2024",
+    "url": "https://outline.uwaterloo.ca/viewer/view/nmtrhx",
+    "outlineId": "nmtrhx",
+    "sections": [
+      "001-004",
+      "101-104",
+      "201"
+    ]
+  },
+  {
+    "code": "CS 245",
+    "title": "Logic and Computation",
+    "term": "Winter 2024",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n6wy7s",
+    "outlineId": "n6wy7s",
+    "sections": [
+      "001",
+      "002",
+      "101-103",
+      "201"
+    ]
+  },
+  {
+    "code": "CHE 102",
+    "title": "Chemistry for Engineers",
+    "term": "Fall 2023",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n79nue",
+    "outlineId": "n79nue",
+    "sections": [
+      "010"
+    ]
+  },
+  {
+    "code": "CS 241",
+    "title": "Foundations of Sequential Programs",
+    "term": "Fall 2023",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n62uxs",
+    "outlineId": "n62uxs",
+    "sections": [
+      "001-003",
+      "101-103",
+      "201"
+    ]
+  },
+  {
+    "code": "ECE 222",
+    "title": "Digital Computers",
+    "term": "Fall 2023",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n8q7jy",
+    "outlineId": "n8q7jy",
+    "sections": [
+      "001",
+      "002"
+    ]
+  },
+  {
+    "code": "SE 212",
+    "title": "Logic and Computation",
+    "term": "Fall 2023",
+    "url": "https://outline.uwaterloo.ca/viewer/view/nb7j2u",
+    "outlineId": "nb7j2u",
+    "sections": [
+      "001",
+      "002"
+    ]
+  },
+  {
+    "code": "STAT 206",
+    "title": "Statistics for Software Engineering",
+    "term": "Fall 2023",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n7hsdc",
+    "outlineId": "n7hsdc",
+    "sections": [
+      "001",
+      "101"
+    ]
+  },
+  {
+    "code": "CS 138",
+    "title": "Introduction to Data Abstraction and Implementation",
+    "term": "Winter 2023",
+    "url": "https://outline.uwaterloo.ca/viewer/view/ng5t9u",
+    "outlineId": "ng5t9u",
+    "sections": [
+      "001"
+    ]
+  },
+  {
+    "code": "ECE 106",
+    "title": "Electricity and Magnetism",
+    "term": "Winter 2023",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n9gkm9",
+    "outlineId": "n9gkm9",
+    "sections": [
+      "001",
+      "002"
+    ]
+  },
+  {
+    "code": "MATH 119",
+    "title": "MATH 119",
+    "term": "Winter 2023",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n65hke",
+    "outlineId": "n65hke",
+    "sections": [
+      "001-003",
+      "101-109"
+    ]
+  },
+  {
+    "code": "MATH 115",
+    "title": "Linear Algebra for Engineering",
+    "term": "Fall 2022",
+    "url": "https://outline.uwaterloo.ca/viewer/view/n558fa",
+    "outlineId": "n558fa",
+    "sections": [
+      "001-010",
+      "101-110"
+    ]
+  },
+  {
+    "code": "MATH 135",
+    "title": "Math 135 Fall 2022",
+    "term": "Fall 2022",
+    "url": "https://outline.uwaterloo.ca/viewer/view/nvy9am",
+    "outlineId": "nvy9am",
+    "sections": [
+      "001-028"
+    ]
+  }
+]

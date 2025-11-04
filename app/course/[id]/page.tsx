@@ -175,7 +175,9 @@ export default function CoursePage({ params }: CoursePageProps) {
                                             <span className="font-medium text-gray-900">{assessment.weight}%</span>
                                             {assessment.dueDate && (
                                                 <p className="text-sm text-gray-500">
-                                                    Due {assessment.dueDate.toLocaleDateString()}
+                                                    Due {typeof assessment.dueDate === 'string' 
+                                                        ? new Date(assessment.dueDate).toLocaleDateString()
+                                                        : assessment.dueDate.toLocaleDateString()}
                                                 </p>
                                             )}
                                         </div>
