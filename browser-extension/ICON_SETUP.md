@@ -9,9 +9,9 @@
 3. Choose red color (#d32f2f)
 4. Download the generated icons
 5. Rename and place in the `icons/` folder:
-   - `favicon-16x16.png` → `icon16.png`
-   - `favicon-32x32.png` → `icon48.png` (resize to 48x48)
-   - `favicon-192x192.png` → `icon128.png` (resize to 128x128)
+    - `favicon-16x16.png` → `icon16.png`
+    - `favicon-32x32.png` → `icon48.png` (resize to 48x48)
+    - `favicon-192x192.png` → `icon128.png` (resize to 128x128)
 
 ### Option 2: Use the HTML Generator
 

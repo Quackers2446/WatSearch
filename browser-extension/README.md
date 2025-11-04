@@ -7,102 +7,92 @@ A Chrome/Edge extension that automatically extracts course data from University 
 ### Step 1: Install the Extension
 
 1. **Open Chrome Extensions:**
-
-   - Go to `chrome://extensions/` (Chrome) or `edge://extensions/` (Edge)
-   - Enable "Developer mode" (toggle in top right corner)
+    - Go to `chrome://extensions/` (Chrome) or `edge://extensions/` (Edge)
+    - Enable "Developer mode" (toggle in top right corner)
 
 2. **Load the Extension:**
-
-   - Click "Load unpacked"
-   - Navigate to your WatSearch project folder
-   - Select the `browser-extension` folder
-   - Click "Select Folder"
+    - Click "Load unpacked"
+    - Navigate to your WatSearch project folder
+    - Select the `browser-extension` folder
+    - Click "Select Folder"
 
 3. **Pin the Extension:**
-   - Click the puzzle piece icon (🧩) in your browser toolbar
-   - Find "WatSearch Data Collector"
-   - Click the pin icon (📌) to keep it visible
+    - Click the puzzle piece icon (🧩) in your browser toolbar
+    - Find "WatSearch Data Collector"
+    - Click the pin icon (📌) to keep it visible
 
 ### Step 2: Start WatSearch Application
 
 1. **Open Terminal/Command Prompt:**
 
-   ```bash
-   cd /path/to/WatSearch
-   npm run dev
-   ```
+    ```bash
+    cd /path/to/WatSearch
+    npm run dev
+    ```
 
 2. **Note the Port:**
-   - WatSearch will run on `http://localhost:3000` (or 3001, 3002 if 3000 is busy)
-   - Check the terminal output for the exact URL
+    - WatSearch will run on `http://localhost:3000` (or 3001, 3002 if 3000 is busy)
+    - Check the terminal output for the exact URL
 
 ### Step 3: Configure the Extension
 
 1. **Open Extension Popup:**
-
-   - Click the WatSearch extension icon in your browser toolbar
-   - You should see the popup interface
+    - Click the WatSearch extension icon in your browser toolbar
+    - You should see the popup interface
 
 2. **Set WatSearch URL:**
-
-   - In the "Settings" section, enter your WatSearch URL
-   - Default: `http://localhost:3000`
-   - If WatSearch is on a different port, update accordingly
+    - In the "Settings" section, enter your WatSearch URL
+    - Default: `http://localhost:3000`
+    - If WatSearch is on a different port, update accordingly
 
 3. **Test Connection:**
-   - Click "Test Connection" to verify the extension can reach WatSearch
-   - You should see "Connection test successful!"
+    - Click "Test Connection" to verify the extension can reach WatSearch
+    - You should see "Connection test successful!"
 
 ## 🎯 How to Use
 
 ### Processing Course Outlines (Recommended)
 
 1. **Navigate to Course Outlines:**
-
-   - Go to [outline.uwaterloo.ca](https://outline.uwaterloo.ca) and log in
-   - Navigate to your enrolled courses page (shows all your courses for the term)
+    - Go to [outline.uwaterloo.ca](https://outline.uwaterloo.ca) and log in
+    - Navigate to your enrolled courses page (shows all your courses for the term)
 
 2. **Open Extension Popup:**
-
-   - Click the WatSearch extension icon in your browser toolbar
-   - The extension will detect you're on the course listings page
+    - Click the WatSearch extension icon in your browser toolbar
+    - The extension will detect you're on the course listings page
 
 3. **Select Terms and Process:**
-
-   - Select which terms you want to process (defaults to most recent term)
-   - Click "Process Selected Course Outlines"
-   - The extension will automatically:
-     - Extract course URLs for selected terms
-     - Open each course outline in background tabs
-     - Extract the full HTML content
-     - Send it directly to your WatSearch API
-     - Show progress and allow cancellation
+    - Select which terms you want to process (defaults to most recent term)
+    - Click "Process Selected Course Outlines"
+    - The extension will automatically:
+        - Extract course URLs for selected terms
+        - Open each course outline in background tabs
+        - Extract the full HTML content
+        - Send it directly to your WatSearch API
+        - Show progress and allow cancellation
 
 4. **Monitor Progress:**
-
-   - Watch the progress in the extension popup
-   - See how many courses have been successfully processed
-   - Cancel at any time if needed
-   - Check your WatSearch application to see the imported courses
+    - Watch the progress in the extension popup
+    - See how many courses have been successfully processed
+    - Cancel at any time if needed
+    - Check your WatSearch application to see the imported courses
 
 ### Automatic Data Collection (LEARN, Quest, Piazza)
 
 1. **Navigate to UW Sites:**
-
-   - Go to [LEARN](https://learn.uwaterloo.ca) and log in
-   - Go to [Quest](https://quest.uwaterloo.ca) and log in
-   - Go to [Piazza](https://piazza.com) and log in
+    - Go to [LEARN](https://learn.uwaterloo.ca) and log in
+    - Go to [Quest](https://quest.uwaterloo.ca) and log in
+    - Go to [Piazza](https://piazza.com) and log in
 
 2. **Data is Extracted Automatically:**
-
-   - The extension will show a notification when data is extracted
-   - You'll see a red notification in the top-right corner of the page
-   - The extension icon will show activity
+    - The extension will show a notification when data is extracted
+    - You'll see a red notification in the top-right corner of the page
+    - The extension icon will show activity
 
 3. **Send to WatSearch:**
-   - Click the WatSearch extension icon
-   - Click "Send to WatSearch" to sync the data
-   - Check your WatSearch application to see the imported data
+    - Click the WatSearch extension icon
+    - Click "Send to WatSearch" to sync the data
+    - Check your WatSearch application to see the imported data
 
 ## 📊 What Data is Collected
 
@@ -273,30 +263,30 @@ The extension is ready for Chrome Web Store submission. Here's what's been prepa
 Before submitting to Chrome Web Store:
 
 1. **Create Store Assets:**
-   - [ ] **Screenshots**: 1280x800 or 640x400 (at least 1, up to 5)
-   - [ ] **Promotional Images** (optional): 920x680 or 1400x560
-   - [ ] **Small Promotional Tile**: 440x280
-   - [ ] **Marquee Promotional Tile**: 920x680
-   - [ ] **Icon**: 128x128 (already have)
+    - [ ] **Screenshots**: 1280x800 or 640x400 (at least 1, up to 5)
+    - [ ] **Promotional Images** (optional): 920x680 or 1400x560
+    - [ ] **Small Promotional Tile**: 440x280
+    - [ ] **Marquee Promotional Tile**: 920x680
+    - [ ] **Icon**: 128x128 (already have)
 
 2. **Prepare Store Listing:**
-   - [ ] **Name**: "WatSearch Data Collector" (already set)
-   - [ ] **Short Description**: "Collects course data from University of Waterloo platforms for WatSearch" (already set)
-   - [ ] **Detailed Description**: Write a compelling description (see template below)
-   - [ ] **Category**: Education or Productivity
-   - [ ] **Language**: English (US)
+    - [ ] **Name**: "WatSearch Data Collector" (already set)
+    - [ ] **Short Description**: "Collects course data from University of Waterloo platforms for WatSearch" (already set)
+    - [ ] **Detailed Description**: Write a compelling description (see template below)
+    - [ ] **Category**: Education or Productivity
+    - [ ] **Language**: English (US)
 
 3. **Privacy & Compliance:**
-   - [ ] **Privacy Policy URL**: Create and host a privacy policy
-   - [ ] **Single Purpose**: Extension has a single, clear purpose ✓
-   - [ ] **User Data**: Document what data is collected (only local data)
-   - [ ] **Permissions Justification**: Explain why each permission is needed
+    - [ ] **Privacy Policy URL**: Create and host a privacy policy
+    - [ ] **Single Purpose**: Extension has a single, clear purpose ✓
+    - [ ] **User Data**: Document what data is collected (only local data)
+    - [ ] **Permissions Justification**: Explain why each permission is needed
 
 4. **Testing:**
-   - [ ] Test on Chrome 88+ (Manifest V3 support)
-   - [ ] Test on Edge (Chromium-based)
-   - [ ] Verify all features work correctly
-   - [ ] Test with different UW platform pages
+    - [ ] Test on Chrome 88+ (Manifest V3 support)
+    - [ ] Test on Edge (Chromium-based)
+    - [ ] Verify all features work correctly
+    - [ ] Test with different UW platform pages
 
 ### 📝 Store Listing Description Template
 
@@ -347,27 +337,28 @@ Create a privacy policy that covers:
 ### 🚀 Submission Steps
 
 1. **Create Developer Account:**
-   - Go to [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole)
-   - Pay one-time $5 registration fee (if not already registered)
+    - Go to [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole)
+    - Pay one-time $5 registration fee (if not already registered)
 
 2. **Prepare ZIP File:**
-   ```bash
-   cd browser-extension
-   zip -r watsearch-extension.zip . -x "*.git*" "*.md" "*.svg" "create_icons.html" "generate_icons.js"
-   ```
+
+    ```bash
+    cd browser-extension
+    zip -r watsearch-extension.zip . -x "*.git*" "*.md" "*.svg" "create_icons.html" "generate_icons.js"
+    ```
 
 3. **Upload Extension:**
-   - Click "New Item" in developer dashboard
-   - Upload the ZIP file
-   - Fill in store listing details
-   - Upload screenshots
-   - Add privacy policy URL
-   - Submit for review
+    - Click "New Item" in developer dashboard
+    - Upload the ZIP file
+    - Fill in store listing details
+    - Upload screenshots
+    - Add privacy policy URL
+    - Submit for review
 
 4. **Review Process:**
-   - Typically takes 1-3 business days
-   - Google may request additional information
-   - Respond promptly to any review comments
+    - Typically takes 1-3 business days
+    - Google may request additional information
+    - Respond promptly to any review comments
 
 ### 📱 Supported Browsers
 

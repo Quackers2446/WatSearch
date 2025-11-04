@@ -5,87 +5,79 @@
 ### Step 1: Install the Extension
 
 1. **Open Chrome/Edge Extensions:**
-
-   - Go to `chrome://extensions/` (Chrome) or `edge://extensions/` (Edge)
-   - Enable "Developer mode" (toggle in top right corner)
+    - Go to `chrome://extensions/` (Chrome) or `edge://extensions/` (Edge)
+    - Enable "Developer mode" (toggle in top right corner)
 
 2. **Load the Extension:**
-
-   - Click "Load unpacked"
-   - Navigate to your WatSearch project folder
-   - Select the `browser-extension` folder
-   - Click "Select Folder"
+    - Click "Load unpacked"
+    - Navigate to your WatSearch project folder
+    - Select the `browser-extension` folder
+    - Click "Select Folder"
 
 3. **Pin the Extension:**
-   - Click the puzzle piece icon in your browser toolbar
-   - Find "WatSearch Data Collector"
-   - Click the pin icon to keep it visible
+    - Click the puzzle piece icon in your browser toolbar
+    - Find "WatSearch Data Collector"
+    - Click the pin icon to keep it visible
 
 ### Step 2: Start WatSearch
 
 1. **Start the Application:**
 
-   ```bash
-   cd /path/to/WatSearch
-   npm run dev
-   ```
+    ```bash
+    cd /path/to/WatSearch
+    npm run dev
+    ```
 
 2. **Note the Port:**
-   - WatSearch will run on `http://localhost:3000` (or 3001, 3002 if 3000 is busy)
-   - Check the terminal output for the exact URL
+    - WatSearch will run on `http://localhost:3000` (or 3001, 3002 if 3000 is busy)
+    - Check the terminal output for the exact URL
 
 ### Step 3: Configure the Extension
 
 1. **Open Extension Popup:**
-
-   - Click the WatSearch extension icon in your browser toolbar
-   - You should see the popup interface
+    - Click the WatSearch extension icon in your browser toolbar
+    - You should see the popup interface
 
 2. **Set WatSearch URL:**
-
-   - In the "Settings" section, enter your WatSearch URL
-   - Default: `http://localhost:3000`
-   - If WatSearch is on a different port, update accordingly
+    - In the "Settings" section, enter your WatSearch URL
+    - Default: `http://localhost:3000`
+    - If WatSearch is on a different port, update accordingly
 
 3. **Test Connection:**
-   - Click "Test Connection" to verify the extension can reach WatSearch
-   - You should see "Connection test successful!"
+    - Click "Test Connection" to verify the extension can reach WatSearch
+    - You should see "Connection test successful!"
 
 ## 🎯 How to Use
 
 ### Automatic Data Collection
 
 1. **Navigate to UW Sites:**
-
-   - Go to [LEARN](https://learn.uwaterloo.ca) and log in
-   - Go to [Quest](https://quest.uwaterloo.ca) and log in
-   - Go to [Piazza](https://piazza.com) and log in
+    - Go to [LEARN](https://learn.uwaterloo.ca) and log in
+    - Go to [Quest](https://quest.uwaterloo.ca) and log in
+    - Go to [Piazza](https://piazza.com) and log in
 
 2. **Data is Extracted Automatically:**
-
-   - The extension will show a notification when data is extracted
-   - You'll see a red notification in the top-right corner of the page
+    - The extension will show a notification when data is extracted
+    - You'll see a red notification in the top-right corner of the page
 
 3. **Send to WatSearch:**
-   - Click the WatSearch extension icon
-   - Click "Send to WatSearch" to sync the data
-   - Check your WatSearch application to see the imported data
+    - Click the WatSearch extension icon
+    - Click "Send to WatSearch" to sync the data
+    - Check your WatSearch application to see the imported data
 
 ### Manual Data Collection
 
 1. **Open Extension Popup:**
-
-   - Click the WatSearch extension icon
-   - The popup shows which site you're currently on
+    - Click the WatSearch extension icon
+    - The popup shows which site you're currently on
 
 2. **Extract Data Manually:**
-
-   - Click "Extract Course Data" button
-   - Wait for the extraction to complete
-   - You'll see how many items were found
+    - Click "Extract Course Data" button
+    - Wait for the extraction to complete
+    - You'll see how many items were found
 
 3. **Send to WatSearch:**
-   - Click "Send to WatSearch" to sync the data
+    - Click "Send to WatSearch" to sync the data
 
 ## 🔧 Troubleshooting
 
@@ -151,20 +143,18 @@
 ## 🆘 Need Help?
 
 1. **Check the Logs:**
-
-   - Open browser console (F12) for extension errors
-   - Check WatSearch terminal for API errors
+    - Open browser console (F12) for extension errors
+    - Check WatSearch terminal for API errors
 
 2. **Test Components:**
-
-   - Test WatSearch API: `http://localhost:3000/api/health`
-   - Test extension popup functionality
-   - Test data extraction on different UW sites
+    - Test WatSearch API: `http://localhost:3000/api/health`
+    - Test extension popup functionality
+    - Test data extraction on different UW sites
 
 3. **Common Issues:**
-   - Port conflicts (try 3001, 3002)
-   - Site layout changes (UW sites update frequently)
-   - Login requirements (make sure you're logged in)
+    - Port conflicts (try 3001, 3002)
+    - Site layout changes (UW sites update frequently)
+    - Login requirements (make sure you're logged in)
 
 ## 🎉 Success!
 

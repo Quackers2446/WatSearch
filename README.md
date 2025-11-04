@@ -100,23 +100,23 @@ The application supports multiple ways to add course data:
 ### Option 1: Browser Extension (Recommended)
 
 1. **Install the Browser Extension**:
-   - See [browser-extension/README.md](browser-extension/README.md) for detailed instructions
-   - Load the extension from the `browser-extension/` folder
-   - Configure it to connect to your local WatSearch instance
+    - See [browser-extension/README.md](browser-extension/README.md) for detailed instructions
+    - Load the extension from the `browser-extension/` folder
+    - Configure it to connect to your local WatSearch instance
 
 2. **Use the Extension**:
-   - Navigate to [outline.uwaterloo.ca](https://outline.uwaterloo.ca) and view your enrolled courses
-   - Open the extension popup and select which terms to process
-   - Click "Process Selected Course Outlines" to automatically extract and add all course details
-   - The extension extracts HTML directly from authenticated pages and sends it to WatSearch
+    - Navigate to [outline.uwaterloo.ca](https://outline.uwaterloo.ca) and view your enrolled courses
+    - Open the extension popup and select which terms to process
+    - Click "Process Selected Course Outlines" to automatically extract and add all course details
+    - The extension extracts HTML directly from authenticated pages and sends it to WatSearch
 
 ### Option 2: Manual Upload via Web Interface
 
 1. Navigate to the "Upload" tab in WatSearch
 2. Download a course outline from [outline.uwaterloo.ca](https://outline.uwaterloo.ca):
-   - Search for your course
-   - Click "View"
-   - Right-click → "Save Page As" → Save as HTML
+    - Search for your course
+    - Click "View"
+    - Right-click → "Save Page As" → Save as HTML
 3. Upload the HTML file through the WatSearch upload interface
 4. The course data will be automatically parsed and added
 

@@ -1,91 +1,1830 @@
-<!DOCTYPE html>
+<!doctype html>
 <!-- saved from url=(0039)https://outline.uwaterloo.ca/viewer/?q= -->
-<html lang="en" data-theme="outline"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="content-security-policy" content="">
-    <title>Outline.uwaterloo.ca</title>
-    
-    
+<html lang="en" data-theme="outline">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<style>.village-iframe{width:100%;height:100%;border:none;display:block;position:fixed;top:0;left:0;z-index:2147483647;background:#0000003d;color-scheme:light}.village-iframe.village-loading{display:flex;justify-content:center;align-items:center}.village-iframe>.village-spinner{width:1.5rem;height:1.5rem;border:2px solid #000;border-left-color:transparent;border-bottom-color:transparent;border-radius:50%;animation:spin .45s linear infinite}.village-iframe.village-hidden{display:none}@keyframes spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.village-hidden{display:none}[village-paths-data=facepiles]{display:flex;align-items:center;padding-right:.5rem}[village-paths-data=facepiles] img{width:1.5rem;height:1.5rem;border-radius:50%;margin-right:-.5rem}[village-paths-data=facepiles] img.village-facepiler-avatar-not-found{filter:blur(7px)}[village-paths-data=facepiles] img:last-child{margin-right:0}[village-paths-data=count]{padding-right:.25rem}[village-paths-availability=error],[village-paths-availability=found],[village-paths-availability=not-found],[village-paths-availability=not-activated]{display:none!important}[village-paths-availability=loading]{display:inline-flex!important}</style><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script></head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="content-security-policy" content="" />
+        <title>Outline.uwaterloo.ca</title>
 
-<body style="display: block;">
-    <div class="min-h-screen flex flex-col">
-        <div class="navbar bg-base-100 w-full z-[51] border-b">
-            <div id="menu-start"></div>
-            <div class="flex-1">
-                <a class="btn btn-ghost normal-case" href="https://outline.uwaterloo.ca/">
-                    <div>
-                        <span class="text-xl">Outline</span><span class="text-sm hidden sm:inline">.uwaterloo.ca</span>
+        <style>
+            .village-iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 2147483647;
+                background: #0000003d;
+                color-scheme: light;
+            }
+            .village-iframe.village-loading {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .village-iframe > .village-spinner {
+                width: 1.5rem;
+                height: 1.5rem;
+                border: 2px solid #000;
+                border-left-color: transparent;
+                border-bottom-color: transparent;
+                border-radius: 50%;
+                animation: spin 0.45s linear infinite;
+            }
+            .village-iframe.village-hidden {
+                display: none;
+            }
+            @keyframes spin {
+                0% {
+                    transform: rotate(0);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+            .village-hidden {
+                display: none;
+            }
+            [village-paths-data="facepiles"] {
+                display: flex;
+                align-items: center;
+                padding-right: 0.5rem;
+            }
+            [village-paths-data="facepiles"] img {
+                width: 1.5rem;
+                height: 1.5rem;
+                border-radius: 50%;
+                margin-right: -0.5rem;
+            }
+            [village-paths-data="facepiles"]
+                img.village-facepiler-avatar-not-found {
+                filter: blur(7px);
+            }
+            [village-paths-data="facepiles"] img:last-child {
+                margin-right: 0;
+            }
+            [village-paths-data="count"] {
+                padding-right: 0.25rem;
+            }
+            [village-paths-availability="error"],
+            [village-paths-availability="found"],
+            [village-paths-availability="not-found"],
+            [village-paths-availability="not-activated"] {
+                display: none !important;
+            }
+            [village-paths-availability="loading"] {
+                display: inline-flex !important;
+            }
+        </style>
+        <script
+            id="simplify-jobs-page-script"
+            src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"
+        ></script>
+    </head>
+
+    <body style="display: block">
+        <div class="min-h-screen flex flex-col">
+            <div class="navbar bg-base-100 w-full z-[51] border-b">
+                <div id="menu-start"></div>
+                <div class="flex-1">
+                    <a
+                        class="btn btn-ghost normal-case"
+                        href="https://outline.uwaterloo.ca/"
+                    >
+                        <div>
+                            <span class="text-xl">Outline</span
+                            ><span class="text-sm hidden sm:inline"
+                                >.uwaterloo.ca</span
+                            >
+                        </div>
+                    </a>
+                </div>
+                <div class="flex-none">
+                    <ul class="menu menu-horizontal px-1">
+                        <li>
+                            <details class="dropdown dropdown-end">
+                                <summary>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        class="bi bi-person-circle"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
+                                        ></path>
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+                                        ></path>
+                                    </svg>
+
+                                    <span class="hidden sm:inline">
+                                        myzhou
+                                    </span>
+                                </summary>
+                                <ul
+                                    class="p-2 bg-base-100 shadow-md w-32 dropdown-content z-[-1]"
+                                >
+                                    <li>
+                                        <a
+                                            href="https://outline.uwaterloo.ca/oidc/logout/"
+                                            >Log Out</a
+                                        >
+                                    </li>
+                                </ul>
+                            </details>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="app" class="grow" data-v-app="">
+                <div data-v-05db03c9="" class="page-content-center mb-8">
+                    <div data-v-05db03c9="" class="prose max-w-full">
+                        <h1 data-v-05db03c9="">Browse Outlines</h1>
+                        <div
+                            data-v-05db03c9=""
+                            class="alert alert-info bg-info/10 mb-3 block"
+                        >
+                            <div data-v-05db03c9="" class="text-center w-full">
+                                <b data-v-05db03c9=""
+                                    >Not all courses use
+                                    Outline.uwaterloo.ca.</b
+                                ><br data-v-05db03c9="" />
+                                For outlines not available here, please check
+                                your course's LEARN page or contact your
+                                instructor directly.
+                            </div>
+                        </div>
+                        <div data-v-05db03c9="">
+                            <div
+                                data-v-05db03c9=""
+                                class="flex sm:gap-4 flex-row flex-wrap: wrap;"
+                            >
+                                <div
+                                    data-v-05db03c9=""
+                                    class="form-control w-full"
+                                >
+                                    <input
+                                        data-v-05db03c9=""
+                                        class="input join-item grow shrink input-bordered border-neutral search-field"
+                                        type="search"
+                                        aria-label="Search for courses"
+                                        placeholder="E.g. BIOL 223, BIOL F22"
+                                    /><label data-v-05db03c9="" class="label"
+                                        ><span
+                                            data-v-05db03c9=""
+                                            class="label-text-alt"
+                                            ><em data-v-05db03c9=""
+                                                >&nbsp;</em
+                                            ></span
+                                        ><!----></label
+                                    >
+                                </div>
+                                <div
+                                    data-v-05db03c9=""
+                                    class="flex sm:flex-row flex-col sm:gap-4 gap-2"
+                                >
+                                    <button
+                                        data-v-05db03c9=""
+                                        class="btn btn-outline join-item btn-neutral"
+                                    >
+                                        <span
+                                            data-v-05db03c9=""
+                                            class="hidden sm:inline"
+                                            >Search</span
+                                        >
+                                        <svg
+                                            data-v-05db03c9=""
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="16"
+                                            height="16"
+                                            fill="currentColor"
+                                            viewBox="0 0 16 16"
+                                            style="border-radius: 0px"
+                                        >
+                                            <path
+                                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                                            ></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div data-v-05db03c9="" class="">
+                                <h2 data-v-05db03c9="" class="text-2xl mt-2">
+                                    My Enrolled Courses
+                                </h2>
+                                <div data-v-05db03c9="">
+                                    <div
+                                        data-v-05db03c9=""
+                                        class="border rounded mt-4 mb-8 shadow-sm"
+                                    >
+                                        <h3
+                                            data-v-05db03c9=""
+                                            class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b"
+                                        >
+                                            Fall 2025
+                                        </h3>
+                                        <table
+                                            data-v-05db03c9=""
+                                            class="table table-fixed my-0"
+                                        >
+                                            <thead data-v-05db03c9="">
+                                                <tr data-v-05db03c9="">
+                                                    <!---->
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[14rem]"
+                                                    >
+                                                        Course
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell w-auto"
+                                                    >
+                                                        Title
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[10rem]"
+                                                    >
+                                                        Sections
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="w-[100px]"
+                                                    ></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-v-05db03c9="">
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 343</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Concurrent and Parallel
+                                                        Programming
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 002, 101
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/nc7p8w"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >ECE 358</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Computer Networks
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 002, 101-103, 201
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n93m3q"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >SCI 238</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Introductory Astronomy
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        081
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/nped86"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >SE 380</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Introduction to Feedback
+                                                        Control
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/nb5y8j"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >SE 390</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Design Project Planning
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/nbx84w"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >SE 464</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Software Design and
+                                                        Architectures
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/njsack"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        data-v-05db03c9=""
+                                        class="border rounded mt-4 mb-8 shadow-sm"
+                                    >
+                                        <h3
+                                            data-v-05db03c9=""
+                                            class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b"
+                                        >
+                                            Spring 2025
+                                        </h3>
+                                        <table
+                                            data-v-05db03c9=""
+                                            class="table table-fixed my-0"
+                                        >
+                                            <thead data-v-05db03c9="">
+                                                <tr data-v-05db03c9="">
+                                                    <!---->
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[14rem]"
+                                                    >
+                                                        Course
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell w-auto"
+                                                    >
+                                                        Title
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[10rem]"
+                                                    >
+                                                        Sections
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="w-[100px]"
+                                                    ></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-v-05db03c9="">
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >PD 11</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Processes for Technical
+                                                        Report Writing
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        081, 082
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n6f837"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        data-v-05db03c9=""
+                                        class="border rounded mt-4 mb-8 shadow-sm"
+                                    >
+                                        <h3
+                                            data-v-05db03c9=""
+                                            class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b"
+                                        >
+                                            Winter 2025
+                                        </h3>
+                                        <table
+                                            data-v-05db03c9=""
+                                            class="table table-fixed my-0"
+                                        >
+                                            <thead data-v-05db03c9="">
+                                                <tr data-v-05db03c9="">
+                                                    <!---->
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[14rem]"
+                                                    >
+                                                        Course
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell w-auto"
+                                                    >
+                                                        Title
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[10rem]"
+                                                    >
+                                                        Sections
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="w-[100px]"
+                                                    ></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-v-05db03c9="">
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 341</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Algorithms
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001-005
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n529x7"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 349</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        User Interfaces
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001-003
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n8szcq"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 370</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Numerical Computation
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001-003, 101
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/nbknz4"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >MATH 213</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Signals, Systems, and
+                                                        Differential Equations
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 101
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/njxsgw"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >SE 350</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Operating Systems
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/ngr5kv"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >SE 465</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Software Testing and
+                                                        Quality Assurance
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/njwzpc"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        data-v-05db03c9=""
+                                        class="border rounded mt-4 mb-8 shadow-sm"
+                                    >
+                                        <h3
+                                            data-v-05db03c9=""
+                                            class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b"
+                                        >
+                                            Fall 2024
+                                        </h3>
+                                        <table
+                                            data-v-05db03c9=""
+                                            class="table table-fixed my-0"
+                                        >
+                                            <thead data-v-05db03c9="">
+                                                <tr data-v-05db03c9="">
+                                                    <!---->
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[14rem]"
+                                                    >
+                                                        Course
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell w-auto"
+                                                    >
+                                                        Title
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[10rem]"
+                                                    >
+                                                        Sections
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="w-[100px]"
+                                                    ></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-v-05db03c9="">
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >PD 10</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Professional
+                                                        Responsibility in
+                                                        Computing
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        081-083
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n9uzyv"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        data-v-05db03c9=""
+                                        class="border rounded mt-4 mb-8 shadow-sm"
+                                    >
+                                        <h3
+                                            data-v-05db03c9=""
+                                            class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b"
+                                        >
+                                            Spring 2024
+                                        </h3>
+                                        <table
+                                            data-v-05db03c9=""
+                                            class="table table-fixed my-0"
+                                        >
+                                            <thead data-v-05db03c9="">
+                                                <tr data-v-05db03c9="">
+                                                    <!---->
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[14rem]"
+                                                    >
+                                                        Course
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell w-auto"
+                                                    >
+                                                        Title
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[10rem]"
+                                                    >
+                                                        Sections
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="w-[100px]"
+                                                    ></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-v-05db03c9="">
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 240</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Data Structures and Data
+                                                        Management
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001-005, 101-107, 201
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n7u9hw"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 247</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Software Engineering
+                                                        Principles
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 101, 201
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n74gze"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 348</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Introduction to Database
+                                                        Management
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 004, 101
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/ng5rpb"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >ECE 192</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Engineering Economics
+                                                        and Impact on Society
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        003
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/nrztd8"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >MATH 239</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Introduction to
+                                                        Combinatorics
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001-004, 101-104, 201
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/nmtrhx"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        data-v-05db03c9=""
+                                        class="border rounded mt-4 mb-8 shadow-sm"
+                                    >
+                                        <h3
+                                            data-v-05db03c9=""
+                                            class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b"
+                                        >
+                                            Winter 2024
+                                        </h3>
+                                        <table
+                                            data-v-05db03c9=""
+                                            class="table table-fixed my-0"
+                                        >
+                                            <thead data-v-05db03c9="">
+                                                <tr data-v-05db03c9="">
+                                                    <!---->
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[14rem]"
+                                                    >
+                                                        Course
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell w-auto"
+                                                    >
+                                                        Title
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[10rem]"
+                                                    >
+                                                        Sections
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="w-[100px]"
+                                                    ></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-v-05db03c9="">
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 245</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Logic and Computation
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 002, 101-103, 201
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n6wy7s"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        data-v-05db03c9=""
+                                        class="border rounded mt-4 mb-8 shadow-sm"
+                                    >
+                                        <h3
+                                            data-v-05db03c9=""
+                                            class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b"
+                                        >
+                                            Fall 2023
+                                        </h3>
+                                        <table
+                                            data-v-05db03c9=""
+                                            class="table table-fixed my-0"
+                                        >
+                                            <thead data-v-05db03c9="">
+                                                <tr data-v-05db03c9="">
+                                                    <!---->
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[14rem]"
+                                                    >
+                                                        Course
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell w-auto"
+                                                    >
+                                                        Title
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[10rem]"
+                                                    >
+                                                        Sections
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="w-[100px]"
+                                                    ></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-v-05db03c9="">
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CHE 102</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Chemistry for Engineers
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        010
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n79nue"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 241</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Foundations of
+                                                        Sequential Programs
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001-003, 101-103, 201
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n62uxs"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >ECE 222</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Digital Computers
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 002
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n8q7jy"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >SE 212</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Logic and Computation
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 002
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/nb7j2u"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >STAT 206</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Statistics for Software
+                                                        Engineering
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 101
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n7hsdc"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        data-v-05db03c9=""
+                                        class="border rounded mt-4 mb-8 shadow-sm"
+                                    >
+                                        <h3
+                                            data-v-05db03c9=""
+                                            class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b"
+                                        >
+                                            Winter 2023
+                                        </h3>
+                                        <table
+                                            data-v-05db03c9=""
+                                            class="table table-fixed my-0"
+                                        >
+                                            <thead data-v-05db03c9="">
+                                                <tr data-v-05db03c9="">
+                                                    <!---->
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[14rem]"
+                                                    >
+                                                        Course
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell w-auto"
+                                                    >
+                                                        Title
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[10rem]"
+                                                    >
+                                                        Sections
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="w-[100px]"
+                                                    ></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-v-05db03c9="">
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >CS 138</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Introduction to Data
+                                                        Abstraction and
+                                                        Implementation
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/ng5t9u"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >ECE 106</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Electricity and
+                                                        Magnetism
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001, 002
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n9gkm9"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >MATH 119</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        MATH 119
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001-003, 101-109
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n65hke"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                        data-v-05db03c9=""
+                                        class="border rounded mt-4 mb-8 shadow-sm"
+                                    >
+                                        <h3
+                                            data-v-05db03c9=""
+                                            class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b"
+                                        >
+                                            Fall 2022
+                                        </h3>
+                                        <table
+                                            data-v-05db03c9=""
+                                            class="table table-fixed my-0"
+                                        >
+                                            <thead data-v-05db03c9="">
+                                                <tr data-v-05db03c9="">
+                                                    <!---->
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[14rem]"
+                                                    >
+                                                        Course
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell w-auto"
+                                                    >
+                                                        Title
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="md:w-[10rem]"
+                                                    >
+                                                        Sections
+                                                    </th>
+                                                    <th
+                                                        data-v-05db03c9=""
+                                                        class="w-[100px]"
+                                                    ></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-v-05db03c9="">
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >MATH 115</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Linear Algebra for
+                                                        Engineering
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001-010, 101-110
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/n558fa"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr
+                                                    data-v-05db03c9=""
+                                                    class="has-[a:hover]:bg-base-200/50 transition-colors"
+                                                >
+                                                    <!---->
+                                                    <td data-v-05db03c9="">
+                                                        <span
+                                                            data-v-05db03c9=""
+                                                            class=""
+                                                            >MATH 135</span
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        data-v-05db03c9=""
+                                                        class="hidden sm:table-cell"
+                                                    >
+                                                        Math 135 Fall 2022
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        001-028
+                                                    </td>
+                                                    <td data-v-05db03c9="">
+                                                        <div
+                                                            data-v-05db03c9=""
+                                                            class="btn-group w-100"
+                                                        >
+                                                            <a
+                                                                data-v-05db03c9=""
+                                                                target="_blank"
+                                                                href="https://outline.uwaterloo.ca/viewer/view/nvy9am"
+                                                                class="btn btn-outline-primary btn-sm"
+                                                                >View</a
+                                                            >
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </a>
+                </div>
+                <div><!----></div>
             </div>
-            <div class="flex-none">
-                <ul class="menu menu-horizontal px-1">
-                    
-                    
-                    <li>
-                        <details class="dropdown dropdown-end">
-                            <summary>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
-                                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"></path>
-                                  </svg>
-                                
-                                <span class="hidden sm:inline">
-                                    myzhou
-                                    
-                                </span>
-                                
-                            </summary>
-                            <ul class="p-2 bg-base-100 shadow-md w-32 dropdown-content z-[-1]">
-                                
-                                <li><a href="https://outline.uwaterloo.ca/oidc/logout/">Log Out</a></li>
-                                
-                                
-                                
 
-                            </ul>
-                        </details>
-                    </li>
-                </ul>
-            </div>
+            <footer
+                class="footer items-center p-4 bg-neutral text-neutral-content"
+            >
+                <div class="items-center grid-flow-col">
+                    <p>Developed and Supported by the University of Waterloo</p>
+                </div>
+                <div
+                    class="grid-flow-col gap-4 md:place-self-center md:justify-self-end"
+                >
+                    <a
+                        class="whitespace-nobreak"
+                        href="mailto:OutlineSupport@uwaterloo.ca"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            fill="currentColor"
+                            class="inline me-2"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M8.05 9.6c.336 0 .504-.24.554-.627.04-.534.198-.815.847-1.26.673-.475 1.049-1.09 1.049-1.986 0-1.325-.92-2.227-2.262-2.227-1.02 0-1.792.492-2.1 1.29A1.7 1.7 0 0 0 6 5.48c0 .393.203.64.545.64.272 0 .455-.147.564-.51.158-.592.525-.915 1.074-.915.61 0 1.03.446 1.03 1.084 0 .563-.208.885-.822 1.325-.619.433-.926.914-.926 1.64v.111c0 .428.208.745.585.745"
+                            ></path>
+                            <path
+                                d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911z"
+                            ></path>
+                            <path
+                                d="M7.001 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0"
+                            ></path>
+                        </svg>
+                        Get Support
+                    </a>
+                </div>
+            </footer>
         </div>
+        <script src="./Outline.uwaterloo.ca_files/terms.js"></script>
+        <script>
+            var username = "myzhou"
+        </script>
 
+        <link
+            rel="stylesheet"
+            href="./Outline.uwaterloo.ca_files/component-styles.css"
+        />
+        <link
+            rel="stylesheet"
+            href="./Outline.uwaterloo.ca_files/error_pages-26050d37.css"
+        />
+        <link
+            rel="stylesheet"
+            href="./Outline.uwaterloo.ca_files/style-15735907.css"
+        />
+        <link
+            rel="stylesheet"
+            href="./Outline.uwaterloo.ca_files/viewer-ccefae46.css"
+        />
+        <script
+            type="module"
+            crossorigin=""
+            src="./Outline.uwaterloo.ca_files/viewer-3a513423.js"
+        ></script>
+        <link
+            href="https://outline.uwaterloo.ca/static/assets/error_pages-acdf1de6.js"
+            type="text/javascript"
+            crossorigin="anonymous"
+            rel="modulepreload"
+            as="script"
+        />
+        <link
+            href="https://outline.uwaterloo.ca/static/assets/style-1885cd9a.js"
+            type="text/javascript"
+            crossorigin="anonymous"
+            rel="modulepreload"
+            as="script"
+        />
+        <link
+            href="https://outline.uwaterloo.ca/static/assets/RouterBase.vue_vue_type_script_setup_true_lang-3f54e6be.js"
+            type="text/javascript"
+            crossorigin="anonymous"
+            rel="modulepreload"
+            as="script"
+        />
+        <link
+            href="https://outline.uwaterloo.ca/static/assets/_plugin-vue_export-helper-c27b6911.js"
+            type="text/javascript"
+            crossorigin="anonymous"
+            rel="modulepreload"
+            as="script"
+        />
 
-    
-    <div id="app" class="grow" data-v-app=""><div data-v-05db03c9="" class="page-content-center mb-8"><div data-v-05db03c9="" class="prose max-w-full"><h1 data-v-05db03c9="">Browse Outlines</h1><div data-v-05db03c9="" class="alert alert-info bg-info/10 mb-3 block"><div data-v-05db03c9="" class="text-center w-full"><b data-v-05db03c9="">Not all courses use Outline.uwaterloo.ca.</b><br data-v-05db03c9=""> For outlines not available here, please check your course's LEARN page or contact your instructor directly. </div></div><div data-v-05db03c9=""><div data-v-05db03c9="" class="flex sm:gap-4 flex-row flex-wrap: wrap;"><div data-v-05db03c9="" class="form-control w-full"><input data-v-05db03c9="" class="input join-item grow shrink input-bordered border-neutral search-field" type="search" aria-label="Search for courses" placeholder="E.g. BIOL 223, BIOL F22"><label data-v-05db03c9="" class="label"><span data-v-05db03c9="" class="label-text-alt"><em data-v-05db03c9="">&nbsp;</em></span><!----></label></div><div data-v-05db03c9="" class="flex sm:flex-row flex-col sm:gap-4 gap-2"><button data-v-05db03c9="" class="btn btn-outline join-item btn-neutral"><span data-v-05db03c9="" class="hidden sm:inline">Search</span> <svg data-v-05db03c9="" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="border-radius: 0px;"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path></svg></button></div></div><div data-v-05db03c9="" class=""><h2 data-v-05db03c9="" class="text-2xl mt-2">My Enrolled Courses</h2><div data-v-05db03c9=""><div data-v-05db03c9="" class="border rounded mt-4 mb-8 shadow-sm"><h3 data-v-05db03c9="" class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b">Fall 2025</h3><table data-v-05db03c9="" class="table table-fixed my-0"><thead data-v-05db03c9=""><tr data-v-05db03c9=""><!----><th data-v-05db03c9="" class="md:w-[14rem]">Course</th><th data-v-05db03c9="" class="hidden sm:table-cell w-auto">Title</th><th data-v-05db03c9="" class="md:w-[10rem]">Sections</th><th data-v-05db03c9="" class="w-[100px]"></th></tr></thead><tbody data-v-05db03c9=""><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 343</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Concurrent and Parallel Programming</td><td data-v-05db03c9="">001, 002, 101</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/nc7p8w" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">ECE 358</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Computer Networks</td><td data-v-05db03c9="">001, 002, 101-103, 201</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n93m3q" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">SCI 238</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Introductory Astronomy</td><td data-v-05db03c9="">081</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/nped86" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">SE 380</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Introduction to Feedback Control</td><td data-v-05db03c9="">001</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/nb5y8j" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">SE 390</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Design Project Planning</td><td data-v-05db03c9="">001</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/nbx84w" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">SE 464</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Software Design and Architectures</td><td data-v-05db03c9="">001</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/njsack" class="btn btn-outline-primary btn-sm">View</a></div></td></tr></tbody></table></div><div data-v-05db03c9="" class="border rounded mt-4 mb-8 shadow-sm"><h3 data-v-05db03c9="" class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b">Spring 2025</h3><table data-v-05db03c9="" class="table table-fixed my-0"><thead data-v-05db03c9=""><tr data-v-05db03c9=""><!----><th data-v-05db03c9="" class="md:w-[14rem]">Course</th><th data-v-05db03c9="" class="hidden sm:table-cell w-auto">Title</th><th data-v-05db03c9="" class="md:w-[10rem]">Sections</th><th data-v-05db03c9="" class="w-[100px]"></th></tr></thead><tbody data-v-05db03c9=""><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">PD 11</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Processes for Technical Report Writing</td><td data-v-05db03c9="">081, 082</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n6f837" class="btn btn-outline-primary btn-sm">View</a></div></td></tr></tbody></table></div><div data-v-05db03c9="" class="border rounded mt-4 mb-8 shadow-sm"><h3 data-v-05db03c9="" class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b">Winter 2025</h3><table data-v-05db03c9="" class="table table-fixed my-0"><thead data-v-05db03c9=""><tr data-v-05db03c9=""><!----><th data-v-05db03c9="" class="md:w-[14rem]">Course</th><th data-v-05db03c9="" class="hidden sm:table-cell w-auto">Title</th><th data-v-05db03c9="" class="md:w-[10rem]">Sections</th><th data-v-05db03c9="" class="w-[100px]"></th></tr></thead><tbody data-v-05db03c9=""><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 341</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Algorithms</td><td data-v-05db03c9="">001-005</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n529x7" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 349</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">User Interfaces</td><td data-v-05db03c9="">001-003</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n8szcq" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 370</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Numerical Computation</td><td data-v-05db03c9="">001-003, 101</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/nbknz4" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">MATH 213</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Signals, Systems, and Differential Equations</td><td data-v-05db03c9="">001, 101</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/njxsgw" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">SE 350</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Operating Systems</td><td data-v-05db03c9="">001</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/ngr5kv" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">SE 465</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Software Testing and Quality Assurance</td><td data-v-05db03c9="">001</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/njwzpc" class="btn btn-outline-primary btn-sm">View</a></div></td></tr></tbody></table></div><div data-v-05db03c9="" class="border rounded mt-4 mb-8 shadow-sm"><h3 data-v-05db03c9="" class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b">Fall 2024</h3><table data-v-05db03c9="" class="table table-fixed my-0"><thead data-v-05db03c9=""><tr data-v-05db03c9=""><!----><th data-v-05db03c9="" class="md:w-[14rem]">Course</th><th data-v-05db03c9="" class="hidden sm:table-cell w-auto">Title</th><th data-v-05db03c9="" class="md:w-[10rem]">Sections</th><th data-v-05db03c9="" class="w-[100px]"></th></tr></thead><tbody data-v-05db03c9=""><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">PD 10</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Professional Responsibility in Computing</td><td data-v-05db03c9="">081-083</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n9uzyv" class="btn btn-outline-primary btn-sm">View</a></div></td></tr></tbody></table></div><div data-v-05db03c9="" class="border rounded mt-4 mb-8 shadow-sm"><h3 data-v-05db03c9="" class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b">Spring 2024</h3><table data-v-05db03c9="" class="table table-fixed my-0"><thead data-v-05db03c9=""><tr data-v-05db03c9=""><!----><th data-v-05db03c9="" class="md:w-[14rem]">Course</th><th data-v-05db03c9="" class="hidden sm:table-cell w-auto">Title</th><th data-v-05db03c9="" class="md:w-[10rem]">Sections</th><th data-v-05db03c9="" class="w-[100px]"></th></tr></thead><tbody data-v-05db03c9=""><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 240</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Data Structures and Data Management</td><td data-v-05db03c9="">001-005, 101-107, 201</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n7u9hw" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 247</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Software Engineering Principles</td><td data-v-05db03c9="">001, 101, 201</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n74gze" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 348</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Introduction to Database Management</td><td data-v-05db03c9="">001, 004, 101</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/ng5rpb" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">ECE 192</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Engineering Economics and Impact on Society</td><td data-v-05db03c9="">003</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/nrztd8" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">MATH 239</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Introduction to Combinatorics</td><td data-v-05db03c9="">001-004, 101-104, 201</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/nmtrhx" class="btn btn-outline-primary btn-sm">View</a></div></td></tr></tbody></table></div><div data-v-05db03c9="" class="border rounded mt-4 mb-8 shadow-sm"><h3 data-v-05db03c9="" class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b">Winter 2024</h3><table data-v-05db03c9="" class="table table-fixed my-0"><thead data-v-05db03c9=""><tr data-v-05db03c9=""><!----><th data-v-05db03c9="" class="md:w-[14rem]">Course</th><th data-v-05db03c9="" class="hidden sm:table-cell w-auto">Title</th><th data-v-05db03c9="" class="md:w-[10rem]">Sections</th><th data-v-05db03c9="" class="w-[100px]"></th></tr></thead><tbody data-v-05db03c9=""><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 245</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Logic and Computation</td><td data-v-05db03c9="">001, 002, 101-103, 201</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n6wy7s" class="btn btn-outline-primary btn-sm">View</a></div></td></tr></tbody></table></div><div data-v-05db03c9="" class="border rounded mt-4 mb-8 shadow-sm"><h3 data-v-05db03c9="" class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b">Fall 2023</h3><table data-v-05db03c9="" class="table table-fixed my-0"><thead data-v-05db03c9=""><tr data-v-05db03c9=""><!----><th data-v-05db03c9="" class="md:w-[14rem]">Course</th><th data-v-05db03c9="" class="hidden sm:table-cell w-auto">Title</th><th data-v-05db03c9="" class="md:w-[10rem]">Sections</th><th data-v-05db03c9="" class="w-[100px]"></th></tr></thead><tbody data-v-05db03c9=""><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CHE 102</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Chemistry for Engineers</td><td data-v-05db03c9="">010</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n79nue" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 241</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Foundations of Sequential Programs</td><td data-v-05db03c9="">001-003, 101-103, 201</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n62uxs" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">ECE 222</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Digital Computers</td><td data-v-05db03c9="">001, 002</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n8q7jy" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">SE 212</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Logic and Computation</td><td data-v-05db03c9="">001, 002</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/nb7j2u" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">STAT 206</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Statistics for Software Engineering</td><td data-v-05db03c9="">001, 101</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n7hsdc" class="btn btn-outline-primary btn-sm">View</a></div></td></tr></tbody></table></div><div data-v-05db03c9="" class="border rounded mt-4 mb-8 shadow-sm"><h3 data-v-05db03c9="" class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b">Winter 2023</h3><table data-v-05db03c9="" class="table table-fixed my-0"><thead data-v-05db03c9=""><tr data-v-05db03c9=""><!----><th data-v-05db03c9="" class="md:w-[14rem]">Course</th><th data-v-05db03c9="" class="hidden sm:table-cell w-auto">Title</th><th data-v-05db03c9="" class="md:w-[10rem]">Sections</th><th data-v-05db03c9="" class="w-[100px]"></th></tr></thead><tbody data-v-05db03c9=""><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">CS 138</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Introduction to Data Abstraction and Implementation</td><td data-v-05db03c9="">001</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/ng5t9u" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">ECE 106</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Electricity and Magnetism</td><td data-v-05db03c9="">001, 002</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n9gkm9" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">MATH 119</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">MATH 119</td><td data-v-05db03c9="">001-003, 101-109</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n65hke" class="btn btn-outline-primary btn-sm">View</a></div></td></tr></tbody></table></div><div data-v-05db03c9="" class="border rounded mt-4 mb-8 shadow-sm"><h3 data-v-05db03c9="" class="text-xl mt-0 mb-0 p-3 bg-base-200/25 border-b">Fall 2022</h3><table data-v-05db03c9="" class="table table-fixed my-0"><thead data-v-05db03c9=""><tr data-v-05db03c9=""><!----><th data-v-05db03c9="" class="md:w-[14rem]">Course</th><th data-v-05db03c9="" class="hidden sm:table-cell w-auto">Title</th><th data-v-05db03c9="" class="md:w-[10rem]">Sections</th><th data-v-05db03c9="" class="w-[100px]"></th></tr></thead><tbody data-v-05db03c9=""><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">MATH 115</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Linear Algebra for Engineering</td><td data-v-05db03c9="">001-010, 101-110</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/n558fa" class="btn btn-outline-primary btn-sm">View</a></div></td></tr><tr data-v-05db03c9="" class="has-[a:hover]:bg-base-200/50 transition-colors"><!----><td data-v-05db03c9=""><span data-v-05db03c9="" class="">MATH 135</span></td><td data-v-05db03c9="" class="hidden sm:table-cell">Math 135 Fall 2022</td><td data-v-05db03c9="">001-028</td><td data-v-05db03c9=""><div data-v-05db03c9="" class="btn-group w-100"><a data-v-05db03c9="" target="_blank" href="https://outline.uwaterloo.ca/viewer/view/nvy9am" class="btn btn-outline-primary btn-sm">View</a></div></td></tr></tbody></table></div></div></div></div></div></div><div><!----></div></div>
-    
-    <footer class="footer items-center p-4 bg-neutral text-neutral-content">
-        <div class="items-center grid-flow-col">
-          <p>Developed and Supported by the University of Waterloo</p>
-        </div> 
-        <div class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-          <a class="whitespace-nobreak" href="mailto:OutlineSupport@uwaterloo.ca">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="inline me-2" viewBox="0 0 16 16">
-                <path d="M8.05 9.6c.336 0 .504-.24.554-.627.04-.534.198-.815.847-1.26.673-.475 1.049-1.09 1.049-1.986 0-1.325-.92-2.227-2.262-2.227-1.02 0-1.792.492-2.1 1.29A1.7 1.7 0 0 0 6 5.48c0 .393.203.64.545.64.272 0 .455-.147.564-.51.158-.592.525-.915 1.074-.915.61 0 1.03.446 1.03 1.084 0 .563-.208.885-.822 1.325-.619.433-.926.914-.926 1.64v.111c0 .428.208.745.585.745"></path>
-                <path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911z"></path>
-                <path d="M7.001 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0"></path>
-              </svg>
-            Get Support
-          </a> 
-        </div>
-      </footer>
-    </div>
-    <script src="./Outline.uwaterloo.ca_files/terms.js"></script>
-    <script> var username="myzhou"</script>
-    
-<link rel="stylesheet" href="./Outline.uwaterloo.ca_files/component-styles.css">
-<link rel="stylesheet" href="./Outline.uwaterloo.ca_files/error_pages-26050d37.css">
-<link rel="stylesheet" href="./Outline.uwaterloo.ca_files/style-15735907.css">
-<link rel="stylesheet" href="./Outline.uwaterloo.ca_files/viewer-ccefae46.css">
-<script type="module" crossorigin="" src="./Outline.uwaterloo.ca_files/viewer-3a513423.js"></script>
-<link href="https://outline.uwaterloo.ca/static/assets/error_pages-acdf1de6.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script">
-<link href="https://outline.uwaterloo.ca/static/assets/style-1885cd9a.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script">
-<link href="https://outline.uwaterloo.ca/static/assets/RouterBase.vue_vue_type_script_setup_true_lang-3f54e6be.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script">
-<link href="https://outline.uwaterloo.ca/static/assets/_plugin-vue_export-helper-c27b6911.js" type="text/javascript" crossorigin="anonymous" rel="modulepreload" as="script">
-
-
-
-<div class="fixed top-12 right-8 !z-[1000]"></div></body></html>
+        <div class="fixed top-12 right-8 !z-[1000]"></div>
+    </body>
+</html>

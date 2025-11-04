@@ -56,19 +56,19 @@ For each page visited, the extension extracts:
 
 ```javascript
 const WATSEARCH_CONFIG = {
-  maxPages: 20, // Maximum pages to visit
-  maxDepth: 3, // Maximum link depth
-  delayBetweenRequests: 1000, // Delay between requests
+    maxPages: 20, // Maximum pages to visit
+    maxDepth: 3, // Maximum link depth
+    delayBetweenRequests: 1000, // Delay between requests
 
-  contentTypes: {
-    assignments: true, // Extract assignments
-    announcements: true, // Extract announcements
-    quizzes: true, // Extract quizzes
-    exams: true, // Extract exams
-    content: true, // Extract course content
-    discussions: true, // Extract discussions
-  },
-};
+    contentTypes: {
+        assignments: true, // Extract assignments
+        announcements: true, // Extract announcements
+        quizzes: true, // Extract quizzes
+        exams: true, // Extract exams
+        content: true, // Extract course content
+        discussions: true, // Extract discussions
+    },
+}
 ```
 
 ## 🎯 Usage
