@@ -3,7 +3,7 @@ export interface Course {
   code: string;
   name: string;
   term: string;
-  sections: string[];
+  sections?: string[];
   instructor: {
     name: string;
     email: string;
@@ -36,7 +36,13 @@ export interface Assessment {
 export interface Material {
   id: string;
   title: string;
-  type: 'textbook' | 'lecture_notes' | 'reading' | 'software' | 'other';
+  type:
+    | 'textbook'
+    | 'lecture_notes'
+    | 'reading'
+    | 'software'
+    | 'lab_manual'
+    | 'other';
   required: boolean;
   price?: number;
   notes?: string;
@@ -60,7 +66,7 @@ export interface Deadline {
   courseCode: string;
   courseName: string;
   dueDate: Date;
-  type: 'assignment' | 'exam' | 'quiz' | 'project';
+  type: 'assignment' | 'exam' | 'quiz' | 'project' | 'lab';
   weight: number;
   description?: string;
   isUpcoming: boolean;
@@ -77,3 +83,7 @@ export interface SearchFilters {
   };
   upcoming?: boolean;
 }
+
+// Backwards-compatible aliases expected by some scripts
+export type Assignment = Assessment;
+export type Reading = Material;

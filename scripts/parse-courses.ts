@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as cheerio from 'cheerio';
-import { Course, Instructor, Assignment, Reading } from '../types';
+import { Course, Assignment, Reading } from '../types';
 
 const coursesDirectory = path.join(__dirname, '../');
 
