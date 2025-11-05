@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     title: "WatSearch - University of Waterloo Academic Hub",
     description:
         "Centralized platform for University of Waterloo students to access course information, assignments, and academic resources.",
+    icons: {
+        icon: "/favicon.ico",
+    },
 }
 
 export default function RootLayout({
