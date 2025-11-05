@@ -8,12 +8,13 @@ import Dashboard from "@/components/Dashboard"
 import CourseBrowser from "@/components/CourseBrowser"
 import UploadOutline from "@/components/UploadOutline"
 import Navigation from "@/components/Navigation"
+import About from "@/components/About"
 
 export default function Home() {
     const [courses, setCourses] = useState<Course[]>([])
     const [deadlines, setDeadlines] = useState<Deadline[]>([])
     const [activeTab, setActiveTab] = useState<
-        "search" | "dashboard" | "courses" | "upload"
+        "search" | "dashboard" | "courses" | "upload" | "about"
     >("search")
     const [searchFilters, setSearchFilters] = useState<SearchFilters>({})
     const [isLoading, setIsLoading] = useState(false)
@@ -135,6 +136,8 @@ export default function Home() {
                 {activeTab === "courses" && <CourseBrowser courses={courses} />}
 
                 {activeTab === "upload" && <UploadOutline />}
+
+                {activeTab === "about" && <About />}
             </main>
         </div>
     )
