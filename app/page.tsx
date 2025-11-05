@@ -17,12 +17,13 @@ import {
     signInAnonymously,
 } from "firebase/auth"
 import { AuthContext } from "./auth"
+import About from "@/components/About"
 
 export default function Home() {
     const [courses, setCourses] = useState<Course[]>([])
     const [deadlines, setDeadlines] = useState<Deadline[]>([])
     const [activeTab, setActiveTab] = useState<
-        "search" | "dashboard" | "courses" | "upload"
+        "search" | "dashboard" | "courses" | "upload" | "about"
     >("search")
     const [searchFilters, setSearchFilters] = useState<SearchFilters>({})
     const [isLoading, setIsLoading] = useState(false)
@@ -160,6 +161,8 @@ export default function Home() {
                     )}
 
                     {activeTab === "upload" && <UploadOutline />}
+
+                    {activeTab === "about" && <About />}
                 </main>
             </div>
         </AuthContext.Provider>
