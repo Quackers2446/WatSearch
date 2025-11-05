@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from "next/server"
-import { readFileSync, writeFileSync } from "fs"
-import { join } from "path"
 import * as cheerio from "cheerio"
 import { Course, Assessment, Material } from "@/types"
 import { verifyAuthHeader } from "../auth"
+import {
+    findUserCourseByCodeAndTerm,
+    saveUserCourse,
+} from "@/lib/firestore-server"
 
 export async function POST(request: NextRequest) {
     try {
         const authHeader = request.headers.get("Authorization")
         const uid = await verifyAuthHeader(authHeader)
+        const idToken = authHeader?.replace(/^Bearer\s+/i, "").trim() || ""
 
         const formData = await request.formData()
         const file = formData.get("file") as File
@@ -46,40 +49,21 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        // Load existing courses
-        const coursesPath = join(process.cwd(), "data", "courses.json")
-        let existingCourses: Course[] = []
-
-        try {
-            const existingData = readFileSync(coursesPath, "utf8")
-            existingCourses = JSON.parse(existingData)
-        } catch (error) {
-            console.log("No existing courses file found, creating new one")
-        }
-
-        // Check if course already exists
-        const existingIndex = existingCourses.findIndex(
-            (c) => c.code === course.code && c.term === course.term,
+        // Check if course already exists for this user
+        const existingCourse = await findUserCourseByCodeAndTerm(
+            uid,
+            course.code,
+            course.term,
+            idToken,
         )
 
-        if (existingIndex >= 0) {
-            // Update existing course
-            existingCourses[existingIndex] = {
-                ...existingCourses[existingIndex],
-                ...course,
-            }
-        } else {
-            // Add new course
-            existingCourses.push(course)
-        }
-
-        // Save updated courses
-        writeFileSync(coursesPath, JSON.stringify(existingCourses, null, 2))
+        // Save or update course in Firestore
+        const savedCourse = await saveUserCourse(uid, course, idToken)
 
         return NextResponse.json({
             success: true,
-            message: `Course ${course.code} ${existingIndex >= 0 ? "updated" : "added"} successfully`,
-            course,
+            message: `Course ${course.code} ${existingCourse ? "updated" : "added"} successfully`,
+            course: savedCourse,
         })
     } catch (error) {
         console.error("Error processing upload:", error)

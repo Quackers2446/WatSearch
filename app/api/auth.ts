@@ -11,7 +11,7 @@ export class AuthError extends Error {
 
 async function fetchPublicKey(kid: string | undefined): Promise<string> {
     if (!kid) {
-        throw new AuthError()
+        throw new AuthError("Missing key ID in token")
     }
     const result = await (
         await fetch(
@@ -19,49 +19,89 @@ async function fetchPublicKey(kid: string | undefined): Promise<string> {
         )
     ).json()
 
-    return result[kid] as string
+    const publicKey = result[kid] as string
+    if (!publicKey) {
+        throw new AuthError("Invalid key ID")
+    }
+    return publicKey
 }
 
-/** Verify access token and return user ID, or throw an error */
+// Firebase project ID from the client config
+const FIREBASE_PROJECT_ID = "watsearch-a8c9b"
+
+/**
+ * Verifies the Firebase ID token from the Authorization header using JWT verification
+ * @param authHeader - The Authorization header value (e.g., "Bearer <token>")
+ * @returns The user's UID if valid, throws error otherwise
+ */
 export async function verifyAuthHeader(
-    header?: string | null,
+    authHeader: string | null,
 ): Promise<string> {
-    if (!header || !header.startsWith("Bearer")) {
-        throw new AuthError()
+    if (!authHeader) {
+        throw new AuthError("No authorization header provided")
     }
 
-    const token = header.slice("Bearer ".length)
+    // Extract token from "Bearer <token>" format
+    const token = authHeader.replace(/^Bearer\s+/i, "").trim()
 
-    const decodedToken = jwt.decode(token, { complete: true })
-
-    if (
-        decodedToken === null ||
-        decodedToken.header.alg !== "RS256" ||
-        decodedToken.header.typ !== "JWT"
-    ) {
-        throw new AuthError()
+    if (!token) {
+        throw new AuthError("No token provided in authorization header")
     }
 
-    const publicKey = await fetchPublicKey(decodedToken.header.kid)
+    try {
+        // Decode the token to get the header (without verification)
+        const decoded = jwt.decode(token, { complete: true })
+        
+        if (!decoded || typeof decoded === "string") {
+            throw new AuthError("Invalid token format")
+        }
 
-    if (!publicKey) {
-        throw new AuthError("No public key")
+        const { header, payload } = decoded as {
+            header: { kid?: string; alg?: string }
+            payload: any
+        }
+
+        // Verify token structure
+        if (!payload || !header) {
+            throw new AuthError("Invalid token structure")
+        }
+
+        // Verify issuer
+        if (payload.iss !== `https://securetoken.google.com/${FIREBASE_PROJECT_ID}`) {
+            throw new AuthError("Invalid token issuer")
+        }
+
+        // Verify audience
+        if (payload.aud !== FIREBASE_PROJECT_ID) {
+            throw new AuthError("Invalid token audience")
+        }
+
+        // Check expiration
+        if (payload.exp && payload.exp < Date.now() / 1000) {
+            throw new AuthError("Token has expired")
+        }
+
+        // Fetch the public key for verification
+        const publicKey = await fetchPublicKey(header.kid)
+
+        // Verify the token signature
+        const verified = jwt.verify(token, publicKey, {
+            algorithms: ["RS256"],
+            issuer: `https://securetoken.google.com/${FIREBASE_PROJECT_ID}`,
+            audience: FIREBASE_PROJECT_ID,
+        }) as jwt.JwtPayload
+
+        // Return the user ID
+        if (!verified.sub || !verified.user_id) {
+            throw new AuthError("Token missing user ID")
+        }
+
+        return verified.user_id || verified.sub
+    } catch (error: any) {
+        if (error instanceof AuthError) {
+            throw error
+        }
+        console.error("Token verification error:", error)
+        throw new AuthError(`Invalid or expired token: ${error.message}`)
     }
-
-    const payload = jwt.verify(token, publicKey)
-
-    if (
-        typeof payload === "string" ||
-        payload.aud !== "watsearch-a8c9b" ||
-        !payload.exp ||
-        payload.exp < Date.now() / 1000 ||
-        !payload.iat ||
-        payload.iat > Date.now() / 1000 ||
-        payload.iss != "https://securetoken.google.com/watsearch-a8c9b" ||
-        !payload.sub
-    ) {
-        throw new AuthError()
-    }
-
-    return payload.sub
 }

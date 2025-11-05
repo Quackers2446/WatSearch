@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
-import { readFileSync, writeFileSync, readdirSync } from "fs"
+import { readdirSync, readFileSync } from "fs"
 import { join } from "path"
 import * as cheerio from "cheerio"
 import { Course, Assessment, Material } from "@/types"
 import { verifyAuthHeader } from "../auth"
+import {
+    getUserCourses,
+    saveUserCourses,
+    findUserCourseByCodeAndTerm,
+    saveUserCourse,
+} from "@/lib/firestore-server"
 
 // Increase timeout for long-running requests (fetching multiple courses)
 export const maxDuration = 300 // 5 minutes
@@ -333,6 +339,7 @@ export async function POST(request: NextRequest) {
     try {
         const authHeader = request.headers.get("Authorization")
         const uid = await verifyAuthHeader(authHeader)
+        const idToken = authHeader?.replace(/^Bearer\s+/i, "").trim() || ""
 
         const formData = await request.formData()
         const file = formData.get("file") as File
@@ -370,14 +377,6 @@ export async function POST(request: NextRequest) {
                 )
             }
 
-            // Save listings to a temporary file for reference
-            const listingsPath = join(
-                process.cwd(),
-                "data",
-                "course-listings.json",
-            )
-            writeFileSync(listingsPath, JSON.stringify(listings, null, 2))
-
             if (action === "parse_only") {
                 return NextResponse.json({
                     success: true,
@@ -412,16 +411,8 @@ export async function POST(request: NextRequest) {
                 policies: [],
             }))
 
-            // Fetch and process all course outlines from URLs
-            const coursesPath = join(process.cwd(), "data", "courses.json")
-
-            let existingCourses: Course[] = []
-            try {
-                const existingData = readFileSync(coursesPath, "utf8")
-                existingCourses = JSON.parse(existingData)
-            } catch (error) {
-                console.log("No existing courses file found, creating new one")
-            }
+            // Get existing courses from Firestore for this user
+            const existingCourses = await getUserCourses(uid, idToken)
 
             const parsedCourses: Course[] = []
             const errors: Array<{ code: string; url: string; error: string }> =
@@ -621,77 +612,45 @@ export async function POST(request: NextRequest) {
                 }
             }
 
-            // Merge with existing courses - prioritize detailed parsed courses
-            const mergedCourses = [...existingCourses]
-            let added = 0
-            let updated = 0
-
-            // First, add/update with detailed parsed courses (from fetched outlines)
+            // Merge courses: prioritize detailed parsed courses, then add listing courses for missing ones
+            const allCoursesToSave: Course[] = []
+            
+            // First, add all detailed parsed courses
             parsedCourses.forEach((detailedCourse) => {
-                const existingIndex = mergedCourses.findIndex(
-                    (c) =>
-                        c.code === detailedCourse.code &&
-                        c.term === detailedCourse.term,
-                )
-
-                if (existingIndex >= 0) {
-                    // Update existing course with detailed information
-                    mergedCourses[existingIndex] = {
-                        ...mergedCourses[existingIndex],
-                        ...detailedCourse,
-                    }
-                    updated++
-                } else {
-                    // Add new detailed course
-                    mergedCourses.push(detailedCourse)
-                    added++
-                }
+                allCoursesToSave.push(detailedCourse)
             })
 
-            // Then, add any remaining courses from listings that weren't successfully fetched
+            // Then, add listing courses that weren't successfully fetched/parsed
             coursesFromListings.forEach((listingCourse) => {
-                // Check if this course was already added from fetched outline
-                const alreadyAdded = parsedCourses.some(
+                const alreadyParsed = parsedCourses.some(
                     (c) =>
                         c.code === listingCourse.code &&
                         c.term === listingCourse.term,
                 )
 
-                if (!alreadyAdded) {
-                    const existingIndex = mergedCourses.findIndex(
+                if (!alreadyParsed) {
+                    // Check if we have a more detailed version in existing courses
+                    const existingDetailed = existingCourses.find(
                         (c) =>
                             c.code === listingCourse.code &&
-                            c.term === listingCourse.term,
+                            c.term === listingCourse.term &&
+                            c.description &&
+                            !c.description.includes(
+                                "Detailed information will be available",
+                            ),
                     )
 
-                    if (existingIndex >= 0) {
-                        // Update existing course with listing info if it doesn't have detailed info
-                        const existing = mergedCourses[existingIndex]
-                        if (
-                            !existing.description ||
-                            existing.description.includes(
-                                "Detailed information will be available",
-                            )
-                        ) {
-                            mergedCourses[existingIndex] = {
-                                ...existing,
-                                ...listingCourse,
-                            }
-                            updated++
-                        }
-                    } else {
-                        // Add new course from listing (as fallback if fetch failed)
-                        mergedCourses.push(listingCourse)
-                        added++
+                    if (!existingDetailed) {
+                        allCoursesToSave.push(listingCourse)
                     }
                 }
             })
 
-            // Save merged courses
-            writeFileSync(coursesPath, JSON.stringify(mergedCourses, null, 2))
+            // Save all courses to Firestore
+            const result = await saveUserCourses(uid, allCoursesToSave, idToken)
 
-            const totalAdded = added
-            const totalUpdated = updated
+            const totalAdded = result.added
+            const totalUpdated = result.updated
             const successCount = parsedCourses.length
             const failedCount = errors.length
 
@@ -725,38 +684,21 @@ export async function POST(request: NextRequest) {
                 )
             }
 
-            // Load existing courses
-            const coursesPath = join(process.cwd(), "data", "courses.json")
-            let existingCourses: Course[] = []
-
-            try {
-                const existingData = readFileSync(coursesPath, "utf8")
-                existingCourses = JSON.parse(existingData)
-            } catch (error) {
-                console.log("No existing courses file found, creating new one")
-            }
-
-            // Check if course already exists
-            const existingIndex = existingCourses.findIndex(
-                (c) => c.code === course.code && c.term === course.term,
+            // Check if course already exists for this user
+            const existingCourse = await findUserCourseByCodeAndTerm(
+                uid,
+                course.code,
+                course.term,
+                idToken,
             )
 
-            if (existingIndex >= 0) {
-                existingCourses[existingIndex] = {
-                    ...existingCourses[existingIndex],
-                    ...course,
-                }
-            } else {
-                existingCourses.push(course)
-            }
-
-            // Save updated courses
-            writeFileSync(coursesPath, JSON.stringify(existingCourses, null, 2))
+            // Save or update course in Firestore
+            const savedCourse = await saveUserCourse(uid, course, idToken)
 
             return NextResponse.json({
                 success: true,
-                message: `Course ${course.code} ${existingIndex >= 0 ? "updated" : "added"} successfully`,
-                course,
+                message: `Course ${course.code} ${existingCourse ? "updated" : "added"} successfully`,
+                course: savedCourse,
             })
         }
     } catch (error) {
