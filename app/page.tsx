@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import "../lib/firebase"
+import { useState, useEffect, useMemo } from "react"
 import { Search, Calendar, BookOpen, Clock, Filter } from "lucide-react"
 import { Course, Deadline, SearchFilters } from "@/types"
 import SearchInterface from "@/components/SearchInterface"
@@ -8,6 +9,14 @@ import Dashboard from "@/components/Dashboard"
 import CourseBrowser from "@/components/CourseBrowser"
 import UploadOutline from "@/components/UploadOutline"
 import Navigation from "@/components/Navigation"
+import {
+    type Auth,
+    type User,
+    getAuth,
+    onAuthStateChanged,
+    signInAnonymously,
+} from "firebase/auth"
+import { AuthContext } from "./auth"
 import About from "@/components/About"
 
 export default function Home() {
@@ -19,6 +28,8 @@ export default function Home() {
     const [searchFilters, setSearchFilters] = useState<SearchFilters>({})
     const [isLoading, setIsLoading] = useState(false)
     const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
+    const [user, setUser] = useState<User | null | undefined>()
+    const auth: Auth = useMemo(() => getAuth(), [])
 
     useEffect(() => {
         // Load course data
@@ -30,6 +41,17 @@ export default function Home() {
         }, 5000)
 
         return () => clearInterval(interval)
+    }, [])
+
+    // Auth
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            setUser(user)
+
+            console.log(user)
+        })
+
+        signInAnonymously(auth).catch(console.error)
     }, [])
 
     const loadCourseData = async () => {
@@ -90,55 +112,59 @@ export default function Home() {
     const upcomingDeadlines = deadlines.filter((d) => d.isUpcoming)
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+        <AuthContext.Provider value={user}>
+            <div className="min-h-screen bg-gray-50">
+                <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
-            {/* Status Bar */}
-            {isLoading && (
-                <div className="bg-blue-50 border-b border-blue-200 px-4 py-2">
-                    <div className="container mx-auto flex items-center space-x-2">
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
-                        <span className="text-sm text-blue-700">
-                            Updating course data...
-                        </span>
+                {/* Status Bar */}
+                {isLoading && (
+                    <div className="bg-blue-50 border-b border-blue-200 px-4 py-2">
+                        <div className="container mx-auto flex items-center space-x-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                            <span className="text-sm text-blue-700">
+                                Updating course data...
+                            </span>
+                        </div>
                     </div>
-                </div>
-            )}
-
-            {lastUpdated && !isLoading && (
-                <div className="bg-green-50 border-b border-green-200 px-4 py-2">
-                    <div className="container mx-auto flex items-center space-x-2">
-                        <div className="h-2 w-2 bg-green-500 rounded-full"></div>
-                        <span className="text-sm text-green-700">
-                            Last updated: {lastUpdated.toLocaleTimeString()}
-                        </span>
-                    </div>
-                </div>
-            )}
-
-            <main className="container mx-auto px-4 py-8">
-                {activeTab === "search" && (
-                    <SearchInterface
-                        courses={courses}
-                        deadlines={deadlines}
-                        filters={searchFilters}
-                        onFiltersChange={setSearchFilters}
-                    />
                 )}
 
-                {activeTab === "dashboard" && (
-                    <Dashboard
-                        courses={courses}
-                        deadlines={upcomingDeadlines}
-                    />
+                {lastUpdated && !isLoading && (
+                    <div className="bg-green-50 border-b border-green-200 px-4 py-2">
+                        <div className="container mx-auto flex items-center space-x-2">
+                            <div className="h-2 w-2 bg-green-500 rounded-full"></div>
+                            <span className="text-sm text-green-700">
+                                Last updated: {lastUpdated.toLocaleTimeString()}
+                            </span>
+                        </div>
+                    </div>
                 )}
 
-                {activeTab === "courses" && <CourseBrowser courses={courses} />}
+                <main className="container mx-auto px-4 py-8">
+                    {activeTab === "search" && (
+                        <SearchInterface
+                            courses={courses}
+                            deadlines={deadlines}
+                            filters={searchFilters}
+                            onFiltersChange={setSearchFilters}
+                        />
+                    )}
 
-                {activeTab === "upload" && <UploadOutline />}
+                    {activeTab === "dashboard" && (
+                        <Dashboard
+                            courses={courses}
+                            deadlines={upcomingDeadlines}
+                        />
+                    )}
 
-                {activeTab === "about" && <About />}
-            </main>
-        </div>
+                    {activeTab === "courses" && (
+                        <CourseBrowser courses={courses} />
+                    )}
+
+                    {activeTab === "upload" && <UploadOutline />}
+
+                    {activeTab === "about" && <About />}
+                </main>
+            </div>
+        </AuthContext.Provider>
     )
 }
