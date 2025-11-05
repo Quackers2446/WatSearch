@@ -147,7 +147,7 @@ export default function UploadOutline() {
             if (data.success) {
                 const message = isListingsFile
                     ? data.message ||
-                      `Successfully processed ${data.listings?.length || 0} course listings. Fetched ${data.successCount || 0} courses with full details.`
+                    `Successfully processed ${data.listings?.length || 0} course listings. Fetched ${data.successCount || 0} courses with full details.`
                     : data.message || "Course outline uploaded successfully!"
 
                 setUploadStatus({
@@ -245,65 +245,6 @@ export default function UploadOutline() {
                                     </li>
                                 </ol>
                             </div>
-                            <div className="border-t pt-3">
-                                <p className="font-medium mb-2">
-                                    For multiple courses (batch upload):
-                                </p>
-                                <ol className="list-decimal list-inside space-y-2 text-sm">
-                                    <li>
-                                        Go to{" "}
-                                        <a
-                                            href="https://outline.uwaterloo.ca/"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-blue-600 hover:text-blue-700 underline inline-flex items-center gap-1"
-                                        >
-                                            https://outline.uwaterloo.ca/
-                                            <ExternalLink className="w-3 h-3" />
-                                        </a>{" "}
-                                        and view your enrolled courses (you'll
-                                        need to authenticate with Duo)
-                                    </li>
-                                    <li>
-                                        Save the page as{" "}
-                                        <code className="bg-blue-100 px-1 rounded">
-                                            Outline.uwaterloo.ca.html
-                                        </code>{" "}
-                                        in the{" "}
-                                        <code className="bg-blue-100 px-1 rounded">
-                                            course-outlines/
-                                        </code>{" "}
-                                        directory
-                                    </li>
-                                    <li>
-                                        Upload the listings file - it will show
-                                        all your courses and create basic
-                                        entries
-                                    </li>
-                                    <li>
-                                        <strong>
-                                            Download each course outline:
-                                        </strong>{" "}
-                                        Click each "View" link, then save each
-                                        page as HTML in the{" "}
-                                        <code className="bg-blue-100 px-1 rounded">
-                                            course-outlines/
-                                        </code>{" "}
-                                        directory
-                                        <br />
-                                        <span className="text-xs text-gray-600 italic">
-                                            (You can name them anything - the
-                                            system will match them by course
-                                            code and term)
-                                        </span>
-                                    </li>
-                                    <li>
-                                        Upload the listings file again - it will
-                                        automatically use the downloaded files
-                                        and populate full course details
-                                    </li>
-                                </ol>
-                            </div>
                         </div>
                         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
                             <p className="text-sm text-blue-800">
@@ -375,13 +316,12 @@ export default function UploadOutline() {
                     <button
                         onClick={handleUpload}
                         disabled={!file || isUploading}
-                        className={`w-full py-3 px-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 ${
-                            !file || isUploading
+                        className={`w-full py-3 px-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 ${!file || isUploading
                                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                                 : isListingsFile
-                                  ? "bg-purple-600 text-white hover:bg-purple-700"
-                                  : "bg-blue-600 text-white hover:bg-blue-700"
-                        }`}
+                                    ? "bg-purple-600 text-white hover:bg-purple-700"
+                                    : "bg-blue-600 text-white hover:bg-blue-700"
+                            }`}
                     >
                         {isUploading ? (
                             <>
@@ -484,11 +424,10 @@ export default function UploadOutline() {
                     {/* Status Message */}
                     {uploadStatus.type && (
                         <div
-                            className={`p-4 rounded-lg flex items-start gap-3 ${
-                                uploadStatus.type === "success"
+                            className={`p-4 rounded-lg flex items-start gap-3 ${uploadStatus.type === "success"
                                     ? "bg-green-50 border border-green-200"
                                     : "bg-red-50 border border-red-200"
-                            }`}
+                                }`}
                         >
                             {uploadStatus.type === "success" ? (
                                 <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
@@ -497,11 +436,10 @@ export default function UploadOutline() {
                             )}
                             <div className="flex-1">
                                 <p
-                                    className={`text-sm ${
-                                        uploadStatus.type === "success"
+                                    className={`text-sm ${uploadStatus.type === "success"
                                             ? "text-green-800"
                                             : "text-red-800"
-                                    }`}
+                                        }`}
                                 >
                                     {uploadStatus.message}
                                 </p>
