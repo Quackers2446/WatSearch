@@ -461,7 +461,7 @@ export default function UploadOutline() {
                         >
                             Select HTML File(s) {files.length > 0 && `(${files.length} selected)`}
                         </label>
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-4 cursor-pointer">
                             <input
                                 ref={fileInputRef}
                                 id="file-upload"
@@ -469,7 +469,7 @@ export default function UploadOutline() {
                                 accept=".html"
                                 multiple
                                 onChange={handleFileChange}
-                                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+                                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer cursor-pointer"
                             />
                         </div>
                         {files.length > 0 && (
