@@ -3,9 +3,13 @@ import { readFileSync, writeFileSync } from "fs"
 import { join } from "path"
 import * as cheerio from "cheerio"
 import { Course, Assessment, Material } from "@/types"
+import { verifyAuthHeader } from "../auth"
 
 export async function POST(request: NextRequest) {
     try {
+        const authHeader = request.headers.get("Authorization")
+        const uid = await verifyAuthHeader(authHeader)
+
         const formData = await request.formData()
         const file = formData.get("file") as File
 

@@ -1,6 +1,6 @@
 "use client"
 
-import {auth} from "../lib/firebase"
+import { auth } from "../lib/firebase"
 import { useState, useEffect, useMemo } from "react"
 import { Search, Calendar, BookOpen, Clock, Filter } from "lucide-react"
 import { Course, Deadline, SearchFilters } from "@/types"
@@ -40,7 +40,7 @@ export default function Home() {
         }, 5000)
 
         return () => clearInterval(interval)
-    }, [])
+    }, [user])
 
     // Auth
     useEffect(() => {
@@ -55,9 +55,16 @@ export default function Home() {
 
     const loadCourseData = async () => {
         try {
+            if (!user) {
+                return
+            }
+
             setIsLoading(true)
+            const idToken = await user.getIdToken()
             // Load course data from API endpoint (which reads from JSON file)
-            const response = await fetch("/api/courses")
+            const response = await fetch("/api/courses", {
+                headers: { Authorization: `Bearer ${idToken}` },
+            })
             const data = await response.json()
             const parsedCourses: Course[] = data.courses || []
 

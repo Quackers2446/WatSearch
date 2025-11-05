@@ -21,6 +21,7 @@
         "date-fns": "^2.30.0",
         "firebase": "^12.5.0",
         "fuse.js": "^7.1.0",
+        "jsonwebtoken": "^9.0.2",
         "lucide-react": "^0.292.0",
         "next": "14.0.0",
         "postcss": "^8.4.31",
@@ -30,6 +31,7 @@
         "typescript": "^5.2.2"
     },
     "devDependencies": {
+        "@types/jsonwebtoken": "^9.0.10",
         "eslint": "^8.51.0",
         "eslint-config-next": "14.0.0",
         "prettier": "^3.6.2"

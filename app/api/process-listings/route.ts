@@ -3,6 +3,7 @@ import { readFileSync, writeFileSync, readdirSync } from "fs"
 import { join } from "path"
 import * as cheerio from "cheerio"
 import { Course, Assessment, Material } from "@/types"
+import { verifyAuthHeader } from "../auth"
 
 // Increase timeout for long-running requests (fetching multiple courses)
 export const maxDuration = 300 // 5 minutes
@@ -330,6 +331,9 @@ function parseCourseOutline(html: string, url?: string): Course | null {
 
 export async function POST(request: NextRequest) {
     try {
+        const authHeader = request.headers.get("Authorization")
+        const uid = await verifyAuthHeader(authHeader)
+
         const formData = await request.formData()
         const file = formData.get("file") as File
         const action = (formData.get("action") as string) || "process"

@@ -11,6 +11,8 @@ import {
     Download,
     RefreshCw,
 } from "lucide-react"
+import { AuthContext } from "@/app/auth"
+import { useContext } from "react"
 
 interface CourseListing {
     code: string
@@ -33,6 +35,7 @@ export default function UploadOutline() {
     const [listings, setListings] = useState<CourseListing[]>([])
     const [showListings, setShowListings] = useState(false)
     const fileInputRef = useRef<HTMLInputElement>(null)
+    const user = useContext(AuthContext)
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files?.[0]
@@ -64,11 +67,18 @@ export default function UploadOutline() {
                             formData.append("action", "parse_only")
 
                             try {
+                                if (!user) {
+                                    return
+                                }
+                                const idToken = await user.getIdToken()
                                 const response = await fetch(
                                     "/api/process-listings",
                                     {
                                         method: "POST",
                                         body: formData,
+                                        headers: {
+                                            Authorization: `Bearer ${idToken}`,
+                                        },
                                     },
                                 )
 
@@ -115,6 +125,11 @@ export default function UploadOutline() {
         setUploadStatus({ type: null, message: "" })
 
         try {
+            if (!user) {
+                return
+            }
+            const idToken = await user.getIdToken()
+
             const formData = new FormData()
             formData.append("file", file)
 
@@ -124,6 +139,7 @@ export default function UploadOutline() {
             const response = await fetch(endpoint, {
                 method: "POST",
                 body: formData,
+                headers: { Authorization: `Bearer ${idToken}` },
             })
 
             const data = await response.json()

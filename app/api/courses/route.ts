@@ -1,9 +1,14 @@
 import { NextRequest, NextResponse } from "next/server"
 import { writeFileSync, readFileSync } from "fs"
 import { join } from "path"
+import { firestore } from "@/lib/firebase"
+import { verifyAuthHeader } from "../auth"
 
 export async function POST(request: NextRequest) {
     try {
+        const authHeader = request.headers.get("Authorization")
+        const uid = await verifyAuthHeader(authHeader)
+
         const data = await request.json()
         console.log("WatSearch API: Received course data:", data)
 
@@ -74,8 +79,11 @@ export async function OPTIONS() {
     })
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
     try {
+        const authHeader = request.headers.get("Authorization")
+        const uid = await verifyAuthHeader(authHeader)
+
         const coursesPath = join(process.cwd(), "data", "courses.json")
         const coursesData = readFileSync(coursesPath, "utf8")
         const courses = JSON.parse(coursesData)
