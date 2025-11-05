@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "WatSearch Data Collector",
     "version": "1.0.1",
-    "description": "Collects course data from University of Waterloo platforms (LEARN, Quest, Piazza, Course Outlines) and sends it to your local WatSearch application for centralized course management.",
+    "description": "Collects course data from UW platforms and sends it to your WatSearch application for centralized course management.",
     "short_name": "WatSearch",
     "author": "WatSearch Team",
     "homepage_url": "https://github.com/watsearch/watsearch",
