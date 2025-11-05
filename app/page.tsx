@@ -1,6 +1,6 @@
 "use client"
 
-import "../lib/firebase"
+import {auth} from "../lib/firebase"
 import { useState, useEffect, useMemo } from "react"
 import { Search, Calendar, BookOpen, Clock, Filter } from "lucide-react"
 import { Course, Deadline, SearchFilters } from "@/types"
@@ -29,7 +29,6 @@ export default function Home() {
     const [isLoading, setIsLoading] = useState(false)
     const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
     const [user, setUser] = useState<User | null | undefined>()
-    const auth: Auth = useMemo(() => getAuth(), [])
 
     useEffect(() => {
         // Load course data
