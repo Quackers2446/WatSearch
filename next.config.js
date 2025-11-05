@@ -23,12 +23,12 @@ const nextConfig = {
         serverComponentsExternalPackages: ["undici", "cheerio"],
     },
     // Increase API route timeout for long-running requests (like fetching multiple courses)
-    api: {
-        responseLimit: false,
-        bodyParser: {
-            sizeLimit: "10mb",
-        },
-    },
+    // api: {
+    //     responseLimit: false,
+    //     bodyParser: {
+    //         sizeLimit: "10mb",
+    //     },
+    // },
 }
 
 module.exports = nextConfig
