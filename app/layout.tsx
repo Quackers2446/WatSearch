@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
+import NavigationWrapper from "../components/NavigationWrapper"
+import SurveyBanner from "../components/SurveyBanner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -23,7 +25,10 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <Analytics />
-                <div className="min-h-screen bg-gray-50">{children}</div>
+                <div className="min-h-screen bg-gray-50">
+                    <SurveyBanner />
+                    {children}
+                </div>
             </body>
         </html>
     )
