@@ -16,10 +16,9 @@ import {
 import { AuthContext } from "@/app/auth"
 import { useContext } from "react"
 import { Course } from "@/types"
-import {
-    storeFile,
-    initDB,
-} from "@/lib/indexeddb"
+import { storeFile, initDB } from "@/lib/indexeddb"
+import { classifyCourseFile } from "@/lib/courseFileClassifier"
+import JSZip from "jszip"
 
 interface CourseListing {
     code: string
@@ -459,97 +458,142 @@ export default function UploadOutline() {
             // Initialize IndexedDB
             await initDB()
 
-            const idToken = await user.getIdToken()
-            const formData = new FormData()
-            formData.append("zipFile", materialsZipFile)
-            formData.append("courseCode", selectedCourse.code)
-            if (selectedCourse.term) {
-                formData.append("term", selectedCourse.term)
+            const jszip = new JSZip()
+            const zip = await jszip.loadAsync(materialsZipFile)
+
+            const allFiles: {
+                relativePath: string
+                filename: string
+                category: string
+                data: ArrayBuffer
+                contentType: string
+            }[] = []
+
+            // Helper: determine content type from extension
+            const getContentType = (filename: string): string => {
+                const ext = filename.toLowerCase().slice(
+                    filename.lastIndexOf("."),
+                )
+                const contentTypes: Record<string, string> = {
+                    ".pdf": "application/pdf",
+                    ".html": "text/html",
+                    ".htm": "text/html",
+                    ".css": "text/css",
+                    ".js": "application/javascript",
+                    ".json": "application/json",
+                    ".png": "image/png",
+                    ".jpg": "image/jpeg",
+                    ".jpeg": "image/jpeg",
+                    ".gif": "image/gif",
+                    ".svg": "image/svg+xml",
+                    ".xlsx":
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    ".xls": "application/vnd.ms-excel",
+                    ".txt": "text/plain",
+                    ".md": "text/markdown",
+                }
+                return contentTypes[ext] || "application/octet-stream"
             }
 
-            const response = await fetch("/api/upload-course-materials", {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${idToken}`,
-                },
-                body: formData,
+            // Collect and classify files from ZIP
+            let totalFiles = 0
+            const zipFiles = Object.values(zip.files)
+
+            setUploadProgress({
+                total: zipFiles.length,
+                processed: 0,
+                uploaded: 0,
             })
 
-            const contentType =
-                response.headers.get("content-type") || "application/json"
+            for (const entry of zipFiles) {
+                const relativePath = entry.name
 
-            let data: any = null
-            if (contentType.includes("application/json")) {
-                data = await response.json()
-            } else {
-                const text = await response.text()
-                throw new Error(
-                    text || "Server responded with a non-JSON payload.",
+                // Skip directories
+                if (entry.dir) continue
+
+                const filename = relativePath.split("/").pop() || relativePath
+
+                // Skip macOS metadata files and hidden files, same rules as server ingest
+                if (filename.startsWith("._")) continue
+                if (relativePath.includes("__MACOSX/")) continue
+                if (filename === ".DS_Store") continue
+                if (
+                    filename.startsWith(".") &&
+                    filename !== ".gitkeep" &&
+                    filename !== ".gitignore"
+                )
+                    continue
+
+                // Classify using existing logic (server-side-safe, pure function)
+                const category = classifyCourseFile(relativePath)
+
+                // Read file data as ArrayBuffer
+                const arrayBuffer = await entry.async("arraybuffer")
+                const contentType = getContentType(filename)
+
+                allFiles.push({
+                    relativePath,
+                    filename,
+                    category,
+                    data: arrayBuffer,
+                    contentType,
+                })
+
+                totalFiles++
+                setUploadProgress((prev) =>
+                    prev
+                        ? {
+                            ...prev,
+                            processed: prev.processed + 1,
+                        }
+                        : null,
                 )
             }
 
-            if (!response.ok) {
-                throw new Error(data.error || "Failed to upload course materials")
-            }
-
             // Store files in IndexedDB
-            const courseId = data.courseId || selectedCourse.id
+            const courseId = selectedCourse.id
             let storedCount = 0
 
-            if (data.files && Array.isArray(data.files)) {
-                setUploadProgress({
-                    total: data.files.length,
-                    processed: 0,
-                    uploaded: 0,
-                })
+            for (const file of allFiles) {
+                try {
+                    // Sanitize fileId from relativePath
+                    const fileId = file.relativePath
+                        .replace(/\//g, "_")
+                        .replace(/\\/g, "_")
+                        .replace(/[^a-zA-Z0-9_-]/g, "_")
+                        .replace(/_+/g, "_")
+                        .replace(/^_|_$/g, "")
 
-                for (const file of data.files) {
-                    try {
-                        // Convert base64 to ArrayBuffer
-                        const binaryString = atob(file.data)
-                        const bytes = new Uint8Array(binaryString.length)
-                        for (let i = 0; i < binaryString.length; i++) {
-                            bytes[i] = binaryString.charCodeAt(i)
-                        }
-                        const arrayBuffer = bytes.buffer
+                    await storeFile(
+                        courseId,
+                        fileId,
+                        file.relativePath,
+                        file.filename,
+                        file.category,
+                        file.data,
+                        file.contentType,
+                    )
 
-                        // Sanitize fileId from relativePath
-                        const fileId = file.relativePath
-                            .replace(/\//g, "_")
-                            .replace(/\\/g, "_")
-                            .replace(/[^a-zA-Z0-9_-]/g, "_")
-                            .replace(/_+/g, "_")
-                            .replace(/^_|_$/g, "")
-
-                        // Store in IndexedDB
-                        await storeFile(
-                            courseId,
-                            fileId,
-                            file.relativePath,
-                            file.filename,
-                            file.category,
-                            arrayBuffer,
-                            file.contentType,
-                        )
-
-                        storedCount++
-                        setUploadProgress({
-                            total: data.files.length,
-                            processed: storedCount,
-                            uploaded: storedCount,
-                        })
-                    } catch (error: any) {
-                        console.error(
-                            `Error storing file ${file.filename} in IndexedDB:`,
-                            error,
-                        )
-                    }
+                    storedCount++
+                    setUploadProgress((prev) =>
+                        prev
+                            ? {
+                                ...prev,
+                                uploaded: storedCount,
+                            }
+                            : null,
+                    )
+                } catch (error: any) {
+                    console.error(
+                        `Error storing file ${file.filename} in IndexedDB:`,
+                        error,
+                    )
                 }
             }
 
             setMaterialsUploadStatus({
                 type: "success",
-                message: `Successfully processed ${data.result.totalFiles} files! ${storedCount} files stored locally in IndexedDB.`,
+                message: `Successfully processed ${totalFiles} files! ${storedCount} files stored locally in IndexedDB.`,
             })
 
             // Clear form
