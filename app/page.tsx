@@ -19,6 +19,10 @@ import {
 } from "firebase/auth"
 import { AuthContext } from "./auth"
 import About from "@/components/About"
+import {
+    courses as allCourses,
+    coursesInitialized as allCoursesInitialized,
+} from "./courses/courses"
 
 export default function Home() {
     const [courses, setCourses] = useState<Course[]>([])
@@ -59,6 +63,9 @@ export default function Home() {
             if (!user) {
                 return
             }
+
+            await allCoursesInitialized
+            console.log(allCourses)
 
             setIsLoading(true)
             const idToken = await user.getIdToken()
