@@ -109,16 +109,13 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
     const [viewMode, setViewMode] = useState<ViewMode>("all")
     const [expandedCourses, setExpandedCourses] = useState<Set<string>>(new Set())
     const [files, setFiles] = useState<CourseFile[]>([])
-    const [fileMetadata, setFileMetadata] = useState<Map<string, FileMetadata[]>>(
-        new Map(),
-    )
     const [isLoading, setIsLoading] = useState(false)
     const [selectedFile, setSelectedFile] = useState<CourseFile | null>(null)
     const [fileBlobUrl, setFileBlobUrl] = useState<string | null>(null)
 
     const user = useContext(AuthContext)
 
-    // Load files from IndexedDB and Firestore
+    // Load files from IndexedDB
     useEffect(() => {
         loadFiles()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -131,37 +128,13 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
         try {
             await initDB()
 
-            // Load files from IndexedDB
+            // Load files from IndexedDB for each course
             const allFiles: CourseFile[] = []
-            const metadataMap = new Map<string, FileMetadata[]>()
 
-            // Get files for each course
             for (const course of courses) {
                 try {
                     const courseFiles = await getCourseFiles(course.id)
                     allFiles.push(...courseFiles)
-
-                    // Also load metadata from Firestore (optional - for additional metadata)
-                    // Files are primarily loaded from IndexedDB
-                    try {
-                        const idToken = await user.getIdToken()
-                        const response = await fetch(
-                            `/api/courses/${course.id}/files`,
-                            {
-                                headers: { Authorization: `Bearer ${idToken}` },
-                            },
-                        )
-
-                        if (response.ok) {
-                            const data = await response.json()
-                            metadataMap.set(course.id, data.files || [])
-                        }
-                    } catch (error) {
-                        // Firestore metadata is optional, continue without it
-                        console.warn(
-                            `Could not load Firestore metadata for ${course.id}`,
-                        )
-                    }
                 } catch (error) {
                     console.error(
                         `Error loading files for course ${course.id}:`,
@@ -171,7 +144,6 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
             }
 
             setFiles(allFiles)
-            setFileMetadata(metadataMap)
         } catch (error) {
             console.error("Error loading files:", error)
         } finally {
