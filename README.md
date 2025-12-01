@@ -95,7 +95,7 @@ WatSearch/
 
 ## Data Sources
 
-The application supports multiple ways to add course data:
+The application supports multiple ways to add course data and materials:
 
 ### Option 1: Browser Extension (Recommended)
 
@@ -110,7 +110,7 @@ The application supports multiple ways to add course data:
     - Click "Process Selected Course Outlines" to automatically extract and add all course details
     - The extension extracts HTML directly from authenticated pages and sends it to WatSearch
 
-### Option 2: Manual Upload via Web Interface
+### Option 2: Manual Upload via Web Interface (Course Outlines)
 
 1. Navigate to the "Upload" tab in WatSearch
 2. Download a course outline from [outline.uwaterloo.ca](https://outline.uwaterloo.ca):
@@ -120,7 +120,24 @@ The application supports multiple ways to add course data:
 3. Upload the HTML file through the WatSearch upload interface
 4. The course data will be automatically parsed and added
 
-### Option 3: Batch Processing (Legacy)
+### Option 3: Upload Course Materials (ZIP → IndexedDB)
+
+WatSearch can also ingest full course folders (e.g., LEARN downloads) and store all files locally in your browser for fast access:
+
+1. Navigate to the **Upload** tab and choose the **Course Materials** sub‑tab.
+2. **Create or obtain a ZIP**:
+    - Download a LEARN “Course Package” ZIP, **or**
+    - Zip a local course folder containing PDFs, HTML, spreadsheets, code, etc.
+3. Select the corresponding course in WatSearch.
+4. Upload the ZIP.
+5. WatSearch will:
+    - Unzip and classify files _client‑side_ (no raw files are sent to the server).
+    - Store all file bytes in **IndexedDB** in your browser.
+    - Expose everything through the **Files** tab, where you can search, sort, filter by course/category, preview, download, and delete local copies.
+
+Course materials stay on your device; WatSearch only uses them to power search and browsing in your browser.
+
+### Option 4: Batch Processing (Legacy)
 
 1. Place HTML course outline files in the `course-outlines/` directory
 2. Name them with the pattern: `Fall 2025_ [Course Name].html`
@@ -156,6 +173,15 @@ The application supports multiple ways to add course data:
 - Expandable course details
 - Access to materials and policies
 - Individual course pages
+
+### Files
+
+- Unified browser for all uploaded course materials
+- Search by filename, path, and category (assignment, exam, lab, tutorial, etc.)
+- Filter by course and file type
+- Sort by name, category, date, or course
+- Inline previews for PDFs, images, and text
+- Download and delete files stored in your local IndexedDB
 
 ## Contributing
 

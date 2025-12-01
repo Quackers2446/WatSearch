@@ -127,7 +127,7 @@ export default function Home() {
 
     return (
         <AuthContext.Provider value={user}>
-            <div className="min-h-screen bg-gray-50">
+            <div className="bg-gray-50">
                 <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
                 {/* Status Bar */}
