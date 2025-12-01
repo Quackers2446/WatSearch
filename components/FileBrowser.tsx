@@ -16,6 +16,7 @@ import {
     BookOpen,
     Calendar,
     RefreshCw,
+    Trash2,
 } from "lucide-react"
 import { Course } from "@/types"
 import { AuthContext } from "@/app/auth"
@@ -24,6 +25,7 @@ import {
     getCourseFiles,
     getFileBlobUrl,
     initDB,
+    deleteFile as deleteIndexedFile,
 } from "@/lib/indexeddb"
 
 interface CourseFile {
@@ -260,6 +262,42 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
             }
         } catch (error) {
             console.error("Error downloading file:", error)
+        }
+    }
+
+    const handleDeleteFile = async (file: CourseFile) => {
+        const confirmed = window.confirm(
+            `Delete "${file.filename}" from ${getCourseName(file.courseId)}? This only affects your local browser storage.`,
+        )
+        if (!confirmed) return
+
+        try {
+            await deleteIndexedFile(file.courseId, file.fileId)
+            setFiles((prev) =>
+                prev.filter(
+                    (f) =>
+                        !(
+                            f.courseId === file.courseId &&
+                            f.fileId === file.fileId
+                        ),
+                ),
+            )
+
+            // Close viewer if this file was open
+            if (
+                selectedFile &&
+                selectedFile.courseId === file.courseId &&
+                selectedFile.fileId === file.fileId
+            ) {
+                if (fileBlobUrl) {
+                    URL.revokeObjectURL(fileBlobUrl)
+                }
+                setSelectedFile(null)
+                setFileBlobUrl(null)
+            }
+        } catch (error) {
+            console.error("Error deleting file:", error)
+            alert("Failed to delete file from local storage.")
         }
     }
 
@@ -534,6 +572,17 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
                                                     >
                                                         <Download size={18} />
                                                     </button>
+                                                    <button
+                                                        onClick={() =>
+                                                            handleDeleteFile(
+                                                                file,
+                                                            )
+                                                        }
+                                                        className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                        title="Delete file from this browser"
+                                                    >
+                                                        <Trash2 size={18} />
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -684,6 +733,21 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
                                                                             title="Download file"
                                                                         >
                                                                             <Download
+                                                                                size={
+                                                                                    16
+                                                                                }
+                                                                            />
+                                                                        </button>
+                                                                        <button
+                                                                            onClick={() =>
+                                                                                handleDeleteFile(
+                                                                                    file,
+                                                                                )
+                                                                            }
+                                                                            className="p-1.5 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                                                                            title="Delete file from this browser"
+                                                                        >
+                                                                            <Trash2
                                                                                 size={
                                                                                     16
                                                                                 }

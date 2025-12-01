@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { verifyAuthHeader } from "../auth"
-import { findCourseIdByCode, saveCourseFiles } from "@/lib/firestore-course-files-server"
+import { findCourseIdByCode } from "@/lib/firestore-course-files-server"
 import { ingestCourseFolder } from "@/lib/courseIngest"
 import AdmZip from "adm-zip"
 import * as fs from "fs"
@@ -149,9 +149,6 @@ export async function POST(request: NextRequest) {
             typeof files[0] & { data: string; contentType: string }
         >;
 
-        // Save metadata to Firestore
-        const result = await saveCourseFiles(uid, finalCourseId, files, idToken, false)
-
         // Clean up temp directory
         if (tempDir && fs.existsSync(tempDir)) {
             fs.rmSync(tempDir, { recursive: true, force: true })
@@ -162,9 +159,10 @@ export async function POST(request: NextRequest) {
             message: `Successfully processed ${files.length} files`,
             result: {
                 totalFiles: files.length,
-                added: result.added,
-                updated: result.updated,
-                uploaded: result.uploaded,
+                // Since we no longer write to Firestore here, treat all as "added" locally
+                added: validFiles.length,
+                updated: 0,
+                uploaded: 0,
             },
             // Return file data for IndexedDB storage
             files: validFiles.map((file) => ({
