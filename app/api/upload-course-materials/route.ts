@@ -7,13 +7,7 @@ import * as fs from "fs"
 import * as path from "path"
 import * as os from "os"
 
-export const config = {
-    api: {
-        bodyParser: false,
-        sizeLimit: "200mb",
-    },
-}
-
+// Ensure this route runs in the Node.js runtime (required for fs and AdmZip)
 export const runtime = "nodejs"
 
 export async function POST(request: NextRequest) {
