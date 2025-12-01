@@ -1024,17 +1024,17 @@ export default function UploadOutline() {
                         </div>
                         <div className="space-y-4 text-gray-700 text-sm">
                             <p>
-                                Upload a ZIP file containing your course materials (PDFs, HTML files, etc.).
-                                Files will be automatically classified, metadata saved to Firestore, and files stored locally in your browser's IndexedDB.
+                                Upload a ZIP file downloaded from LEARN or your local course folder (PDFs, HTML files, spreadsheets, code, etc.).
+                                Files are classified client-side (no server upload), and stored locally in your browser's IndexedDB for fast, private access.
                             </p>
                             <div>
                                 <p className="font-medium mb-2">Instructions:</p>
                                 <ol className="list-decimal list-inside space-y-2">
-                                    <li>Create a ZIP file containing all your course materials</li>
-                                    <li>Select the course you want to upload materials for</li>
+                                    <li>Create a ZIP file containing all your course materials (or download a LEARN “Course Package” ZIP)</li>
+                                    <li>Select the course you want to attach materials to</li>
                                     <li>Upload the ZIP file</li>
-                                    <li>Files will be automatically classified and stored locally in your browser</li>
-                                    <li>File metadata is saved to Firestore for searching and organization</li>
+                                    <li>Files will be automatically classified (assignments, labs, exams, tutorials, etc.) and stored locally in your browser</li>
+                                    <li>You can browse and search them later from the Files tab in WatSearch</li>
                                 </ol>
                             </div>
                         </div>
