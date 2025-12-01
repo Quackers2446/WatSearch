@@ -117,3 +117,6 @@ temp/
 
 # TypeScript
 *.tsbuildinfo
+
+course-outlines.json
+outline-extract-1259-asu-access 1.json

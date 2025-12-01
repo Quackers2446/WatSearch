@@ -19,6 +19,10 @@ import {
 } from "firebase/auth"
 import { AuthContext } from "./auth"
 import About from "@/components/About"
+import {
+    courses as allCourses,
+    coursesInitialized as allCoursesInitialized,
+} from "./courses/courses"
 
 export default function Home() {
     const [courses, setCourses] = useState<Course[]>([])
@@ -60,6 +64,9 @@ export default function Home() {
                 return
             }
 
+            await allCoursesInitialized
+            console.log(allCourses)
+
             setIsLoading(true)
             const idToken = await user.getIdToken()
             // Load course data from API endpoint (which reads from JSON file)
@@ -85,7 +92,7 @@ export default function Home() {
                                 : assessment.dueDate
                         const daysUntilDue = Math.ceil(
                             (dueDate.getTime() - now.getTime()) /
-                            (1000 * 60 * 60 * 24),
+                                (1000 * 60 * 60 * 24),
                         )
 
                         allDeadlines.push({
@@ -167,9 +174,7 @@ export default function Home() {
                         <CourseBrowser courses={courses} />
                     )}
 
-                    {activeTab === "files" && (
-                        <FileBrowser courses={courses} />
-                    )}
+                    {activeTab === "files" && <FileBrowser courses={courses} />}
 
                     {activeTab === "upload" && <UploadOutline />}
 
