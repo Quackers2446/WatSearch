@@ -1025,6 +1025,7 @@ export default function UploadOutline() {
                         <div className="space-y-4 text-gray-700 text-sm">
                             <p>
                                 Upload a ZIP file downloaded from LEARN or your local course folder (PDFs, HTML files, spreadsheets, code, etc.).
+                                Course page → Content → Table of Contents → Download.
                                 Files are classified client-side (no server upload), and stored locally in your browser's IndexedDB for fast, private access.
                             </p>
                             <div>

@@ -85,7 +85,7 @@ export default function Home() {
                                 : assessment.dueDate
                         const daysUntilDue = Math.ceil(
                             (dueDate.getTime() - now.getTime()) /
-                            (1000 * 60 * 60 * 24),
+                                (1000 * 60 * 60 * 24),
                         )
 
                         allDeadlines.push({
@@ -120,7 +120,7 @@ export default function Home() {
 
     return (
         <AuthContext.Provider value={user}>
-            <div className="min-h-screen bg-gray-50">
+            <div className="bg-gray-50">
                 <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
                 {/* Status Bar */}
@@ -167,9 +167,7 @@ export default function Home() {
                         <CourseBrowser courses={courses} />
                     )}
 
-                    {activeTab === "files" && (
-                        <FileBrowser courses={courses} />
-                    )}
+                    {activeTab === "files" && <FileBrowser courses={courses} />}
 
                     {activeTab === "upload" && <UploadOutline />}
 
