@@ -51,10 +51,11 @@ export default function Navigation({
                                     <button
                                         key={tab.id}
                                         onClick={() => setActiveTab(tab.id)}
-                                        className={`flex items-center space-x-1 lg:space-x-2 px-2 lg:px-4 py-2 rounded-lg transition-colors ${isActive
-                                            ? "bg-uw-red text-white"
-                                            : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                                            }`}
+                                        className={`flex items-center space-x-1 lg:space-x-2 px-2 lg:px-4 py-2 rounded-lg transition-colors ${
+                                            isActive
+                                                ? "bg-uw-red text-white"
+                                                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                                        }`}
                                     >
                                         <Icon size={16} className="lg:hidden" />
                                         <Icon

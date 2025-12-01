@@ -13,6 +13,7 @@ import {
     Folder,
     Package,
 } from "lucide-react"
+import Link from "next/link"
 import { AuthContext } from "@/app/auth"
 import { useContext } from "react"
 import { Course } from "@/types"
@@ -69,6 +70,7 @@ export default function UploadOutline() {
         uploaded: number
     } | null>(null)
     const materialsFileInputRef = useRef<HTMLInputElement>(null)
+    const [showMaterialsInstructions, setShowMaterialsInstructions] = useState(true)
 
     const user = useContext(AuthContext)
 
@@ -1004,6 +1006,13 @@ export default function UploadOutline() {
                                                 </div>
                                             )}
                                     </div>
+                                    <p className="mt-2 text-sm text-gray-500">
+                                        By uploading files you agree to the project's data handling described in our{' '}
+                                        <Link href="/privacy" className="text-blue-600 hover:underline">
+                                            Privacy Policy
+                                        </Link>
+                                        .
+                                    </p>
                                 </div>
                             )}
                         </div>
@@ -1021,24 +1030,41 @@ export default function UploadOutline() {
                                 <Info className="w-5 h-5 text-blue-600" />
                                 Upload Course Materials
                             </h2>
+                            <button
+                                onClick={() => setShowMaterialsInstructions(!showMaterialsInstructions)}
+                                className="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                                aria-label={showMaterialsInstructions ? "Hide instructions" : "Show instructions"}
+                            >
+                                {showMaterialsInstructions ? "Hide" : "Show"} Instructions
+                            </button>
                         </div>
-                        <div className="space-y-4 text-gray-700 text-sm">
-                            <p>
-                                Upload a ZIP file downloaded from LEARN or your local course folder (PDFs, HTML files, spreadsheets, code, etc.).
-                                Course page → Content → Table of Contents → Download.
-                                Files are classified client-side (no server upload), and stored locally in your browser's IndexedDB for fast, private access.
-                            </p>
-                            <div>
-                                <p className="font-medium mb-2">Instructions:</p>
-                                <ol className="list-decimal list-inside space-y-2">
-                                    <li>Create a ZIP file containing all your course materials (or download a LEARN “Course Package” ZIP)</li>
-                                    <li>Select the course you want to attach materials to</li>
-                                    <li>Upload the ZIP file</li>
-                                    <li>Files will be automatically classified (assignments, labs, exams, tutorials, etc.) and stored locally in your browser</li>
-                                    <li>You can browse and search them later from the Files tab in WatSearch</li>
-                                </ol>
+
+                        {showMaterialsInstructions && (
+                            <div className="space-y-4 text-gray-700 text-sm">
+                                <p>
+                                    Upload a ZIP file downloaded from LEARN or your local course folder (PDFs, HTML files, spreadsheets, code, etc.).
+                                    Course page → Content → Table of Contents → Download.
+                                    Files are classified client-side (no server upload), and stored locally in your browser's IndexedDB for fast, private access.
+                                </p>
+                                <div>
+                                    <p className="font-medium mb-2">Instructions:</p>
+                                    <ol className="list-decimal list-inside space-y-2">
+                                        <li>Create a ZIP file containing all your course materials (or download a LEARN “Course Package” ZIP)</li>
+                                        <li>Select the course you want to attach materials to</li>
+                                        <li>Upload the ZIP file</li>
+                                        <li>Files will be automatically classified (assignments, labs, exams, tutorials, etc.) and stored locally in your browser</li>
+                                        <li>You can browse and search them later from the Files tab in WatSearch</li>
+                                    </ol>
+                                </div>
+                                <p className="mt-2 text-sm text-gray-500">
+                                    By uploading materials you agree to the project's data handling described in our{' '}
+                                    <Link href="/privacy" className="text-blue-600 hover:underline">
+                                        Privacy Policy
+                                    </Link>
+                                    .
+                                </p>
                             </div>
-                        </div>
+                        )}
                     </div>
 
                     {/* Upload Form */}

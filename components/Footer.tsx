@@ -15,10 +15,6 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center md:justify-end gap-4">
-            <Link href="/about" className="hover:underline flex items-center">
-              <Info className={iconClass} aria-hidden />
-              <span>About</span>
-            </Link>
 
             <Link href="/privacy" className="hover:underline flex items-center">
               <Shield className={iconClass} aria-hidden />
