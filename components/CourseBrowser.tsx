@@ -198,13 +198,10 @@ export default function CourseBrowser({ courses }: CourseBrowserProps) {
                                                             </span>
                                                             {assessment.dueDate && (
                                                                 <p className="text-xs text-gray-500">
-                                                                    Due{" "}
-                                                                    {typeof assessment.dueDate ===
-                                                                    "string"
-                                                                        ? new Date(
-                                                                              assessment.dueDate,
-                                                                          ).toLocaleDateString()
-                                                                        : assessment.dueDate.toLocaleDateString()}
+                                                                    {(() => {
+                                                                        const d = new Date(assessment.dueDate);
+                                                                        return isNaN(d.getTime()) ? "" : d.toLocaleDateString();
+                                                                    })()}
                                                                 </p>
                                                             )}
                                                         </div>

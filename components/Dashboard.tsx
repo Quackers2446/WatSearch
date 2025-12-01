@@ -284,10 +284,10 @@ export default function Dashboard({ courses, deadlines }: DashboardProps) {
                                                 {upcomingCount} upcoming
                                                 deadlines
                                             </span>
-                                            <button className="text-uw-red hover:text-red-700 flex items-center space-x-1">
+                                            {/* <button className="text-uw-red hover:text-red-700 flex items-center space-x-1">
                                                 <span>View Details</span>
                                                 <ChevronRight size={14} />
-                                            </button>
+                                            </button> */}
                                         </div>
                                     </div>
                                 </div>
