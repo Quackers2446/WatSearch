@@ -7,6 +7,15 @@ import * as fs from "fs"
 import * as path from "path"
 import * as os from "os"
 
+export const config = {
+    api: {
+        bodyParser: false,
+        sizeLimit: "200mb",
+    },
+}
+
+export const runtime = "nodejs"
+
 export async function POST(request: NextRequest) {
     let tempDir: string | null = null
 

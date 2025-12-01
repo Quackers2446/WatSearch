@@ -475,7 +475,18 @@ export default function UploadOutline() {
                 body: formData,
             })
 
-            const data = await response.json()
+            const contentType =
+                response.headers.get("content-type") || "application/json"
+
+            let data: any = null
+            if (contentType.includes("application/json")) {
+                data = await response.json()
+            } else {
+                const text = await response.text()
+                throw new Error(
+                    text || "Server responded with a non-JSON payload.",
+                )
+            }
 
             if (!response.ok) {
                 throw new Error(data.error || "Failed to upload course materials")
