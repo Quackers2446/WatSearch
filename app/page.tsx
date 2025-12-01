@@ -7,6 +7,7 @@ import { Course, Deadline, SearchFilters } from "@/types"
 import SearchInterface from "@/components/SearchInterface"
 import Dashboard from "@/components/Dashboard"
 import CourseBrowser from "@/components/CourseBrowser"
+import FileBrowser from "@/components/FileBrowser"
 import UploadOutline from "@/components/UploadOutline"
 import Navigation from "@/components/Navigation"
 import {
@@ -23,7 +24,7 @@ export default function Home() {
     const [courses, setCourses] = useState<Course[]>([])
     const [deadlines, setDeadlines] = useState<Deadline[]>([])
     const [activeTab, setActiveTab] = useState<
-        "search" | "dashboard" | "courses" | "upload" | "about"
+        "search" | "dashboard" | "courses" | "files" | "upload" | "about"
     >("search")
     const [searchFilters, setSearchFilters] = useState<SearchFilters>({})
     const [isLoading, setIsLoading] = useState(false)
@@ -84,7 +85,7 @@ export default function Home() {
                                 : assessment.dueDate
                         const daysUntilDue = Math.ceil(
                             (dueDate.getTime() - now.getTime()) /
-                                (1000 * 60 * 60 * 24),
+                            (1000 * 60 * 60 * 24),
                         )
 
                         allDeadlines.push({
@@ -164,6 +165,10 @@ export default function Home() {
 
                     {activeTab === "courses" && (
                         <CourseBrowser courses={courses} />
+                    )}
+
+                    {activeTab === "files" && (
+                        <FileBrowser courses={courses} />
                     )}
 
                     {activeTab === "upload" && <UploadOutline />}
