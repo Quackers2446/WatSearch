@@ -580,6 +580,42 @@ export default function UploadOutline() {
                 return undefined
             }
 
+            // Helper function to extract text from HTML files
+            const extractHTMLText = async (fileData: ArrayBuffer, filename: string, contentType: string): Promise<string | undefined> => {
+                if (
+                    filename.toLowerCase().endsWith(".html") ||
+                    filename.toLowerCase().endsWith(".htm") ||
+                    contentType === "text/html"
+                ) {
+                    try {
+                        // Convert ArrayBuffer to text
+                        const decoder = new TextDecoder("utf-8")
+                        const htmlText = decoder.decode(fileData)
+
+                        // Parse HTML and extract text content
+                        const parser = new DOMParser()
+                        const doc = parser.parseFromString(htmlText, "text/html")
+
+                        // Remove script and style elements
+                        const scripts = doc.querySelectorAll("script, style")
+                        scripts.forEach((el) => el.remove())
+
+                        // Get text content from body (or document if no body)
+                        const body = doc.body || doc.documentElement
+                        const text = body.textContent || body.innerText || ""
+
+                        // Clean up whitespace
+                        return text
+                            .replace(/\s+/g, " ")
+                            .replace(/\n\s*\n/g, "\n")
+                            .trim()
+                    } catch (error) {
+                        console.error(`Error extracting text from HTML ${filename}:`, error)
+                    }
+                }
+                return undefined
+            }
+
             for (const file of allFiles) {
                 try {
                     // Sanitize fileId from relativePath
@@ -590,10 +626,16 @@ export default function UploadOutline() {
                         .replace(/_+/g, "_")
                         .replace(/^_|_$/g, "")
 
-                    // Extract text from PDFs
+                    // Extract text from PDFs and HTML files
                     let extractedText: string | undefined
                     if (file.contentType === "application/pdf" || file.filename.toLowerCase().endsWith(".pdf")) {
                         extractedText = await extractPDFText(file.data, file.filename, file.contentType)
+                    } else if (
+                        file.contentType === "text/html" ||
+                        file.filename.toLowerCase().endsWith(".html") ||
+                        file.filename.toLowerCase().endsWith(".htm")
+                    ) {
+                        extractedText = await extractHTMLText(file.data, file.filename, file.contentType)
                     }
 
                     await storeFile(
