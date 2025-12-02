@@ -118,13 +118,11 @@ export const coursesInitialized: Promise<boolean> = new Promise(
             } else {
                 // This will basically inline the JSON data into the compiled code.
                 // The transpiler should be smart enough to remove it when process.env.NODE_ENV === "production".
-                const data = await import("./course-outlines.json")
-
-                for (const item of Object.values(data)) {
-                    courses[item.id] = item
-                }
-
-                resolve(true)
+                // const data = await import("./course-outlines.json")
+                // for (const item of Object.values(data)) {
+                //     courses[item.id] = item
+                // }
+                // resolve(true)
             }
         } catch (err) {
             console.error(err)
