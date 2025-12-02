@@ -1,11 +1,11 @@
 "use client"
 
-import { Search, Calendar, BookOpen, Info, Upload, Folder } from "lucide-react"
+import { Search, Calendar, BookOpen, Info, Upload, Folder, Compass } from "lucide-react"
 
 interface NavigationProps {
-    activeTab: "search" | "dashboard" | "courses" | "files" | "upload" | "about"
+    activeTab: "search" | "dashboard" | "courses" | "files" | "upload" | "browse" | "about"
     setActiveTab: (
-        tab: "search" | "dashboard" | "courses" | "files" | "upload" | "about",
+        tab: "search" | "dashboard" | "courses" | "files" | "upload" | "browse" | "about",
     ) => void
 }
 
@@ -18,6 +18,7 @@ export default function Navigation({
         { id: "dashboard", label: "Dashboard", icon: Calendar },
         { id: "courses", label: "Courses", icon: BookOpen },
         { id: "files", label: "Files", icon: Folder },
+        { id: "browse", label: "Browse", icon: Compass },
         { id: "upload", label: "Upload", icon: Upload },
     ] as const
 

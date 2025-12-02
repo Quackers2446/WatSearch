@@ -9,6 +9,7 @@ import Dashboard from "@/components/Dashboard"
 import CourseBrowser from "@/components/CourseBrowser"
 import FileBrowser from "@/components/FileBrowser"
 import UploadOutline from "@/components/UploadOutline"
+import CourseSearch from "@/components/CourseSearch"
 import Navigation from "@/components/Navigation"
 import {
     type Auth,
@@ -28,7 +29,7 @@ export default function Home() {
     const [courses, setCourses] = useState<Course[]>([])
     const [deadlines, setDeadlines] = useState<Deadline[]>([])
     const [activeTab, setActiveTab] = useState<
-        "search" | "dashboard" | "courses" | "files" | "upload" | "about"
+        "search" | "dashboard" | "courses" | "files" | "upload" | "browse" | "about"
     >("search")
     const [searchFilters, setSearchFilters] = useState<SearchFilters>({})
     const [isLoading, setIsLoading] = useState(false)
@@ -177,6 +178,15 @@ export default function Home() {
                     {activeTab === "files" && <FileBrowser courses={courses} />}
 
                     {activeTab === "upload" && <UploadOutline />}
+
+                    {activeTab === "browse" && (
+                        <CourseSearch
+                            onCourseAdded={() => {
+                                // Reload courses after adding
+                                loadCourseData()
+                            }}
+                        />
+                    )}
 
                     {activeTab === "about" && <About />}
                 </main>
