@@ -4,7 +4,7 @@
  */
 
 const DB_NAME = "WatSearchFiles";
-const DB_VERSION = 1;
+const DB_VERSION = 2; // Increment version to trigger upgrade
 const STORE_NAME = "courseFiles";
 
 interface StoredFile {
@@ -17,6 +17,7 @@ interface StoredFile {
     data: ArrayBuffer;
     contentType: string;
     uploadedAt: number;
+    extractedText?: string; // Extracted text content for searchable files (PDFs, etc.)
 }
 
 let db: IDBDatabase | null = null;
@@ -43,6 +44,7 @@ export async function initDB(): Promise<IDBDatabase> {
 
         request.onupgradeneeded = (event) => {
             const database = (event.target as IDBOpenDBRequest).result;
+            const oldVersion = event.oldVersion || 0;
 
             // Create object store if it doesn't exist
             if (!database.objectStoreNames.contains(STORE_NAME)) {
@@ -57,6 +59,14 @@ export async function initDB(): Promise<IDBDatabase> {
                 objectStore.createIndex("relativePath", "relativePath", {
                     unique: false,
                 });
+            } else if (oldVersion < 2) {
+                // Upgrade existing database: add extractedText index if needed
+                const transaction = (event.target as IDBOpenDBRequest).transaction;
+                if (transaction) {
+                    const objectStore = transaction.objectStore(STORE_NAME);
+                    // extractedText is optional, so we don't need a separate index
+                    // The field will be added automatically when files are updated
+                }
             }
         };
     });
@@ -73,6 +83,7 @@ export async function storeFile(
     category: string,
     data: ArrayBuffer,
     contentType: string,
+    extractedText?: string,
 ): Promise<void> {
     const database = await initDB();
     const id = `${courseId}_${fileId}`;
@@ -87,6 +98,7 @@ export async function storeFile(
         data,
         contentType,
         uploadedAt: Date.now(),
+        extractedText,
     };
 
     return new Promise((resolve, reject) => {

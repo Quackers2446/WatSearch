@@ -17,6 +17,8 @@ import {
     Calendar,
     RefreshCw,
     Trash2,
+    CheckSquare,
+    Square,
 } from "lucide-react"
 import { Course } from "@/types"
 import { AuthContext } from "@/app/auth"
@@ -37,6 +39,7 @@ interface CourseFile {
     category: string
     contentType: string
     uploadedAt: number
+    extractedText?: string // Extracted text content for searchable files
 }
 
 interface FileMetadata {
@@ -114,6 +117,7 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
     const [isLoading, setIsLoading] = useState(false)
     const [selectedFile, setSelectedFile] = useState<CourseFile | null>(null)
     const [fileBlobUrl, setFileBlobUrl] = useState<string | null>(null)
+    const [selectedFiles, setSelectedFiles] = useState<Set<string>>(new Set())
 
     const user = useContext(AuthContext)
 
@@ -173,7 +177,8 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
                     file.relativePath.toLowerCase().includes(query) ||
                     (CATEGORY_LABELS[file.category] || file.category)
                         .toLowerCase()
-                        .includes(query),
+                        .includes(query) ||
+                    (file.extractedText && file.extractedText.toLowerCase().includes(query)),
             )
         }
 
@@ -283,6 +288,13 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
                 ),
             )
 
+            // Remove from selection if selected
+            setSelectedFiles((prev) => {
+                const newSet = new Set(prev)
+                newSet.delete(file.id)
+                return newSet
+            })
+
             // Close viewer if this file was open
             if (
                 selectedFile &&
@@ -298,6 +310,69 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
         } catch (error) {
             console.error("Error deleting file:", error)
             alert("Failed to delete file from local storage.")
+        }
+    }
+
+    const handleBulkDelete = async () => {
+        const filesToDelete = filteredFiles.filter((f) => selectedFiles.has(f.id))
+        if (filesToDelete.length === 0) return
+
+        const confirmed = window.confirm(
+            `Delete ${filesToDelete.length} file${filesToDelete.length > 1 ? "s" : ""}? This only affects your local browser storage.`,
+        )
+        if (!confirmed) return
+
+        try {
+            // Delete all selected files
+            for (const file of filesToDelete) {
+                try {
+                    await deleteIndexedFile(file.courseId, file.fileId)
+                } catch (error) {
+                    console.error(`Error deleting file ${file.filename}:`, error)
+                }
+            }
+
+            // Remove deleted files from state
+            setFiles((prev) =>
+                prev.filter((f) => !selectedFiles.has(f.id)),
+            )
+
+            // Close viewer if the selected file was deleted
+            if (selectedFile && selectedFiles.has(selectedFile.id)) {
+                if (fileBlobUrl) {
+                    URL.revokeObjectURL(fileBlobUrl)
+                }
+                setSelectedFile(null)
+                setFileBlobUrl(null)
+            }
+
+            // Clear selection
+            setSelectedFiles(new Set())
+        } catch (error) {
+            console.error("Error deleting files:", error)
+            alert("Failed to delete some files from local storage.")
+        }
+    }
+
+    const toggleFileSelection = (fileId: string) => {
+        setSelectedFiles((prev) => {
+            const newSet = new Set(prev)
+            if (newSet.has(fileId)) {
+                newSet.delete(fileId)
+            } else {
+                newSet.add(fileId)
+            }
+            return newSet
+        })
+    }
+
+    const toggleSelectAll = () => {
+        if (selectedFiles.size === filteredFiles.length) {
+            // Deselect all
+            setSelectedFiles(new Set())
+        } else {
+            // Select all filtered files
+            setSelectedFiles(new Set(filteredFiles.map((f) => f.id)))
         }
     }
 
@@ -462,9 +537,25 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
                     </div>
                 </div>
 
-                {/* Stats */}
-                <div className="mt-4 text-sm text-gray-600">
-                    Showing {filteredFiles.length} of {files.length} files
+                {/* Stats and Bulk Actions */}
+                <div className="mt-4 flex items-center justify-between">
+                    <div className="text-sm text-gray-600">
+                        Showing {filteredFiles.length} of {files.length} files
+                        {selectedFiles.size > 0 && (
+                            <span className="ml-2 text-uw-red font-medium">
+                                ({selectedFiles.size} selected)
+                            </span>
+                        )}
+                    </div>
+                    {selectedFiles.size > 0 && (
+                        <button
+                            onClick={handleBulkDelete}
+                            className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2 text-sm font-medium"
+                        >
+                            <Trash2 size={16} />
+                            Delete {selectedFiles.size} file{selectedFiles.size > 1 ? "s" : ""}
+                        </button>
+                    )}
                 </div>
             </div>
 
@@ -498,96 +589,134 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
                                     </p>
                                 </div>
                             ) : (
-                                filteredFiles.map((file) => {
-                                    const course = courses.find(
-                                        (c) => c.id === file.courseId,
-                                    )
-                                    return (
-                                        <div
-                                            key={file.id}
-                                            className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow"
-                                        >
-                                            <div className="flex items-start justify-between">
-                                                <div className="flex-1 min-w-0">
-                                                    <div className="flex items-center gap-3 mb-2">
-                                                        <FileText
-                                                            className="text-gray-400 flex-shrink-0"
-                                                            size={20}
-                                                        />
+                                <>
+                                    {/* Select All Checkbox */}
+                                    {filteredFiles.length > 0 && (
+                                        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-3">
+                                            <button
+                                                onClick={toggleSelectAll}
+                                                className="flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900"
+                                            >
+                                                {selectedFiles.size === filteredFiles.length ? (
+                                                    <CheckSquare size={20} className="text-uw-red" />
+                                                ) : (
+                                                    <Square size={20} className="text-gray-400" />
+                                                )}
+                                                <span>
+                                                    {selectedFiles.size === filteredFiles.length
+                                                        ? "Deselect all"
+                                                        : "Select all"}
+                                                </span>
+                                            </button>
+                                        </div>
+                                    )}
+                                    {filteredFiles.map((file) => {
+                                        const course = courses.find(
+                                            (c) => c.id === file.courseId,
+                                        )
+                                        const isSelected = selectedFiles.has(file.id)
+                                        return (
+                                            <div
+                                                key={file.id}
+                                                className={`bg-white rounded-lg shadow-sm border p-4 hover:shadow-md transition-shadow ${isSelected
+                                                    ? "border-uw-red bg-red-50"
+                                                    : "border-gray-200"
+                                                    }`}
+                                            >
+                                                <div className="flex items-start justify-between">
+                                                    <div className="flex items-start gap-3 flex-1 min-w-0">
+                                                        <button
+                                                            onClick={() => toggleFileSelection(file.id)}
+                                                            className="mt-0.5 flex-shrink-0"
+                                                        >
+                                                            {isSelected ? (
+                                                                <CheckSquare size={20} className="text-uw-red" />
+                                                            ) : (
+                                                                <Square size={20} className="text-gray-400" />
+                                                            )}
+                                                        </button>
                                                         <div className="flex-1 min-w-0">
-                                                            <h3 className="text-sm font-medium text-gray-900 truncate">
-                                                                {file.filename}
-                                                            </h3>
-                                                            <p className="text-xs text-gray-500 truncate">
-                                                                {file.relativePath}
-                                                            </p>
+                                                            <div className="flex items-center gap-3 mb-2">
+                                                                <FileText
+                                                                    className="text-gray-400 flex-shrink-0"
+                                                                    size={20}
+                                                                />
+                                                                <div className="flex-1 min-w-0">
+                                                                    <h3 className="text-sm font-medium text-gray-900 truncate">
+                                                                        {file.filename}
+                                                                    </h3>
+                                                                    <p className="text-xs text-gray-500 truncate">
+                                                                        {file.relativePath}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <div className="flex items-center gap-3 flex-wrap">
+                                                                {course && (
+                                                                    <span className="text-xs text-gray-600 flex items-center gap-1">
+                                                                        <BookOpen size={12} />
+                                                                        {course.code}
+                                                                    </span>
+                                                                )}
+                                                                <span
+                                                                    className={`text-xs px-2 py-1 rounded ${CATEGORY_COLORS[
+                                                                        file.category
+                                                                    ] ||
+                                                                        "bg-gray-100 text-gray-800"
+                                                                        }`}
+                                                                >
+                                                                    {
+                                                                        CATEGORY_LABELS[
+                                                                        file.category
+                                                                        ] || file.category
+                                                                    }
+                                                                </span>
+                                                                <span className="text-xs text-gray-500 flex items-center gap-1">
+                                                                    <Calendar size={12} />
+                                                                    {new Date(
+                                                                        file.uploadedAt,
+                                                                    ).toLocaleDateString()}
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div className="flex items-center gap-3 flex-wrap">
-                                                        {course && (
-                                                            <span className="text-xs text-gray-600 flex items-center gap-1">
-                                                                <BookOpen size={12} />
-                                                                {course.code}
-                                                            </span>
-                                                        )}
-                                                        <span
-                                                            className={`text-xs px-2 py-1 rounded ${CATEGORY_COLORS[
-                                                                file.category
-                                                            ] ||
-                                                                "bg-gray-100 text-gray-800"
-                                                                }`}
-                                                        >
-                                                            {
-                                                                CATEGORY_LABELS[
-                                                                file.category
-                                                                ] || file.category
+                                                    <div className="flex items-center gap-2 ml-4">
+                                                        <button
+                                                            onClick={() =>
+                                                                handleViewFile(file)
                                                             }
-                                                        </span>
-                                                        <span className="text-xs text-gray-500 flex items-center gap-1">
-                                                            <Calendar size={12} />
-                                                            {new Date(
-                                                                file.uploadedAt,
-                                                            ).toLocaleDateString()}
-                                                        </span>
+                                                            className="p-2 text-gray-600 hover:text-uw-red hover:bg-red-50 rounded-lg transition-colors"
+                                                            title="View file"
+                                                        >
+                                                            <Eye size={18} />
+                                                        </button>
+                                                        <button
+                                                            onClick={() =>
+                                                                handleDownloadFile(
+                                                                    file,
+                                                                )
+                                                            }
+                                                            className="p-2 text-gray-600 hover:text-uw-red hover:bg-red-50 rounded-lg transition-colors"
+                                                            title="Download file"
+                                                        >
+                                                            <Download size={18} />
+                                                        </button>
+                                                        <button
+                                                            onClick={() =>
+                                                                handleDeleteFile(
+                                                                    file,
+                                                                )
+                                                            }
+                                                            className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                                            title="Delete file from this browser"
+                                                        >
+                                                            <Trash2 size={18} />
+                                                        </button>
                                                     </div>
                                                 </div>
-                                                <div className="flex items-center gap-2 ml-4">
-                                                    <button
-                                                        onClick={() =>
-                                                            handleViewFile(file)
-                                                        }
-                                                        className="p-2 text-gray-600 hover:text-uw-red hover:bg-red-50 rounded-lg transition-colors"
-                                                        title="View file"
-                                                    >
-                                                        <Eye size={18} />
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            handleDownloadFile(
-                                                                file,
-                                                            )
-                                                        }
-                                                        className="p-2 text-gray-600 hover:text-uw-red hover:bg-red-50 rounded-lg transition-colors"
-                                                        title="Download file"
-                                                    >
-                                                        <Download size={18} />
-                                                    </button>
-                                                    <button
-                                                        onClick={() =>
-                                                            handleDeleteFile(
-                                                                file,
-                                                            )
-                                                        }
-                                                        className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                                                        title="Delete file from this browser"
-                                                    >
-                                                        <Trash2 size={18} />
-                                                    </button>
-                                                </div>
                                             </div>
-                                        </div>
-                                    )
-                                })
+                                        )
+                                    })}
+                                </>
                             )}
                         </div>
                     ) : (
@@ -664,98 +793,116 @@ export default function FileBrowser({ courses }: FileBrowserProps) {
                                                 {isExpanded && (
                                                     <div className="border-t border-gray-200 p-4 space-y-2">
                                                         {courseFiles.map(
-                                                            (file) => (
-                                                                <div
-                                                                    key={
-                                                                        file.id
-                                                                    }
-                                                                    className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                                                                >
-                                                                    <div className="flex-1 min-w-0">
-                                                                        <div className="flex items-center gap-2 mb-1">
-                                                                            <FileText
-                                                                                size={
-                                                                                    16
-                                                                                }
-                                                                                className="text-gray-400 flex-shrink-0"
-                                                                            />
-                                                                            <h4 className="text-sm font-medium text-gray-900 truncate">
-                                                                                {
-                                                                                    file.filename
-                                                                                }
-                                                                            </h4>
-                                                                        </div>
-                                                                        <div className="flex items-center gap-2 flex-wrap">
-                                                                            <span
-                                                                                className={`text-xs px-2 py-0.5 rounded ${CATEGORY_COLORS[
-                                                                                    file.category
-                                                                                ] ||
-                                                                                    "bg-gray-100 text-gray-800"
-                                                                                    }`}
+                                                            (file) => {
+                                                                const isSelected = selectedFiles.has(file.id)
+                                                                return (
+                                                                    <div
+                                                                        key={
+                                                                            file.id
+                                                                        }
+                                                                        className={`flex items-center justify-between p-3 rounded-lg transition-colors ${isSelected
+                                                                            ? "bg-red-50 border border-uw-red"
+                                                                            : "bg-gray-50 hover:bg-gray-100"
+                                                                            }`}
+                                                                    >
+                                                                        <div className="flex items-center gap-2 flex-1 min-w-0">
+                                                                            <button
+                                                                                onClick={() => toggleFileSelection(file.id)}
+                                                                                className="flex-shrink-0"
                                                                             >
-                                                                                {
-                                                                                    CATEGORY_LABELS[
-                                                                                    file.category
-                                                                                    ] ||
-                                                                                    file.category
+                                                                                {isSelected ? (
+                                                                                    <CheckSquare size={16} className="text-uw-red" />
+                                                                                ) : (
+                                                                                    <Square size={16} className="text-gray-400" />
+                                                                                )}
+                                                                            </button>
+                                                                            <div className="flex-1 min-w-0">
+                                                                                <div className="flex items-center gap-2 mb-1">
+                                                                                    <FileText
+                                                                                        size={
+                                                                                            16
+                                                                                        }
+                                                                                        className="text-gray-400 flex-shrink-0"
+                                                                                    />
+                                                                                    <h4 className="text-sm font-medium text-gray-900 truncate">
+                                                                                        {
+                                                                                            file.filename
+                                                                                        }
+                                                                                    </h4>
+                                                                                </div>
+                                                                                <div className="flex items-center gap-2 flex-wrap">
+                                                                                    <span
+                                                                                        className={`text-xs px-2 py-0.5 rounded ${CATEGORY_COLORS[
+                                                                                            file.category
+                                                                                        ] ||
+                                                                                            "bg-gray-100 text-gray-800"
+                                                                                            }`}
+                                                                                    >
+                                                                                        {
+                                                                                            CATEGORY_LABELS[
+                                                                                            file.category
+                                                                                            ] ||
+                                                                                            file.category
+                                                                                        }
+                                                                                    </span>
+                                                                                    <span className="text-xs text-gray-500">
+                                                                                        {new Date(
+                                                                                            file.uploadedAt,
+                                                                                        ).toLocaleDateString()}
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="flex items-center gap-2 ml-4">
+                                                                            <button
+                                                                                onClick={() =>
+                                                                                    handleViewFile(
+                                                                                        file,
+                                                                                    )
                                                                                 }
-                                                                            </span>
-                                                                            <span className="text-xs text-gray-500">
-                                                                                {new Date(
-                                                                                    file.uploadedAt,
-                                                                                ).toLocaleDateString()}
-                                                                            </span>
+                                                                                className="p-1.5 text-gray-600 hover:text-uw-red hover:bg-red-50 rounded transition-colors"
+                                                                                title="View file"
+                                                                            >
+                                                                                <Eye
+                                                                                    size={
+                                                                                        16
+                                                                                    }
+                                                                                />
+                                                                            </button>
+                                                                            <button
+                                                                                onClick={() =>
+                                                                                    handleDownloadFile(
+                                                                                        file,
+                                                                                    )
+                                                                                }
+                                                                                className="p-1.5 text-gray-600 hover:text-uw-red hover:bg-red-50 rounded transition-colors"
+                                                                                title="Download file"
+                                                                            >
+                                                                                <Download
+                                                                                    size={
+                                                                                        16
+                                                                                    }
+                                                                                />
+                                                                            </button>
+                                                                            <button
+                                                                                onClick={() =>
+                                                                                    handleDeleteFile(
+                                                                                        file,
+                                                                                    )
+                                                                                }
+                                                                                className="p-1.5 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
+                                                                                title="Delete file from this browser"
+                                                                            >
+                                                                                <Trash2
+                                                                                    size={
+                                                                                        16
+                                                                                    }
+                                                                                />
+                                                                            </button>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="flex items-center gap-2 ml-4">
-                                                                        <button
-                                                                            onClick={() =>
-                                                                                handleViewFile(
-                                                                                    file,
-                                                                                )
-                                                                            }
-                                                                            className="p-1.5 text-gray-600 hover:text-uw-red hover:bg-red-50 rounded transition-colors"
-                                                                            title="View file"
-                                                                        >
-                                                                            <Eye
-                                                                                size={
-                                                                                    16
-                                                                                }
-                                                                            />
-                                                                        </button>
-                                                                        <button
-                                                                            onClick={() =>
-                                                                                handleDownloadFile(
-                                                                                    file,
-                                                                                )
-                                                                            }
-                                                                            className="p-1.5 text-gray-600 hover:text-uw-red hover:bg-red-50 rounded transition-colors"
-                                                                            title="Download file"
-                                                                        >
-                                                                            <Download
-                                                                                size={
-                                                                                    16
-                                                                                }
-                                                                            />
-                                                                        </button>
-                                                                        <button
-                                                                            onClick={() =>
-                                                                                handleDeleteFile(
-                                                                                    file,
-                                                                                )
-                                                                            }
-                                                                            className="p-1.5 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded transition-colors"
-                                                                            title="Delete file from this browser"
-                                                                        >
-                                                                            <Trash2
-                                                                                size={
-                                                                                    16
-                                                                                }
-                                                                            />
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            ),
+                                                                )
+                                                            },
                                                         )}
                                                     </div>
                                                 )}

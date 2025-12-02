@@ -383,15 +383,13 @@ export default function UploadOutline() {
                 message: `Successfully uploaded ${successCount} file${successCount > 1 ? "s" : ""
                     }!`,
             })
-            // Clear files and reload after a delay
+            // Clear files after a delay
             setTimeout(() => {
                 setFiles([])
                 setFileStatuses([])
                 if (fileInputRef.current) {
                     fileInputRef.current.value = ""
                 }
-                window.dispatchEvent(new CustomEvent("courseUploaded"))
-                window.location.reload()
             }, 2000)
         } else if (successCount > 0 && errorCount > 0) {
             setUploadStatus({
@@ -556,6 +554,32 @@ export default function UploadOutline() {
             const courseId = selectedCourse.id
             let storedCount = 0
 
+            // Helper function to extract text from PDF
+            const extractPDFText = async (fileData: ArrayBuffer, filename: string, contentType: string): Promise<string | undefined> => {
+                if (filename.toLowerCase().endsWith(".pdf") || contentType === "application/pdf") {
+                    try {
+                        const formData = new FormData()
+                        const blob = new Blob([fileData], { type: "application/pdf" })
+                        formData.append("file", blob, filename)
+
+                        const response = await fetch("/api/extract-pdf-text", {
+                            method: "POST",
+                            body: formData,
+                        })
+
+                        if (response.ok) {
+                            const data = await response.json()
+                            if (data.success && data.text) {
+                                return data.text
+                            }
+                        }
+                    } catch (error) {
+                        console.error(`Error extracting text from PDF ${filename}:`, error)
+                    }
+                }
+                return undefined
+            }
+
             for (const file of allFiles) {
                 try {
                     // Sanitize fileId from relativePath
@@ -566,6 +590,12 @@ export default function UploadOutline() {
                         .replace(/_+/g, "_")
                         .replace(/^_|_$/g, "")
 
+                    // Extract text from PDFs
+                    let extractedText: string | undefined
+                    if (file.contentType === "application/pdf" || file.filename.toLowerCase().endsWith(".pdf")) {
+                        extractedText = await extractPDFText(file.data, file.filename, file.contentType)
+                    }
+
                     await storeFile(
                         courseId,
                         fileId,
@@ -574,6 +604,7 @@ export default function UploadOutline() {
                         file.category,
                         file.data,
                         file.contentType,
+                        extractedText,
                     )
 
                     storedCount++
@@ -605,12 +636,6 @@ export default function UploadOutline() {
                 materialsFileInputRef.current.value = ""
             }
             setUploadProgress(null)
-
-            // Reload after a delay
-            setTimeout(() => {
-                window.dispatchEvent(new CustomEvent("courseUploaded"))
-                window.location.reload()
-            }, 2000)
         } catch (error: any) {
             setMaterialsUploadStatus({
                 type: "error",
