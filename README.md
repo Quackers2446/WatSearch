@@ -153,6 +153,8 @@ Course materials stay on your device; WatSearch only uses them to power search a
 
 ## Features Overview
 
+TBD
+
 ### Search Interface
 
 - Fuzzy search across all course content
